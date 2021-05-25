@@ -1,0 +1,32 @@
+---
+title: "README"
+author: Alex
+date: 2021-05-25
+output: html_document
+---
+https://docs.google.com/spreadsheets/d/17xm2eFFqhhT-M6-jTC_lsar7RMgk8Ln-TwQPDWlRfIY/edit?pli=1#gid=1057164591
+
+This google sheet currently contains a bunch of GSEids that may be troubled. THey not even currently be in Gemma
+The purpose of this exersize is to familiarize yourself with "tidyverse" data wrangling, and ggplot visualization.
+
+Using the Gemma API via the actual API interface, or getGemmaInfo.m will also be necessary.
+
+In the end, I want to know the following:
+1) Which GSEs are currently in Gemma, and how many of them are there
+2) Which GSEs are currently not in Gemma, and how many of them are there
+3) Which GSEs are public, and how many
+4) Which GSEs have DEA, and how many
+5) Some basic visualizations to show the numbers you obtain from 1,2,3, and 4
+
+
+
+Steps to take:
+1)To get started, take a look at scripts/00_setup. Run it to make sure your R environment is functioning properly
+2)Learn about the fundamental data structures in R: This is a solid resource to get started: "https://swcarpentry.github.io/r-novice-inflammation/13"
+3)create a txt file in /data that is "\n" delimited and contains GSEids
+4) Use the gemma API (getGemmaInfo.m), and run it on all of your GSEids
+5)use read.delim() to create a data frame containing all those GSEids, and use it again to create a dataframe of the GemmaAPIinfo
+6)Create an R script in /scripts, and use it to explore basic dyplr (a package within tidyverse) functions. Use the functions to explore the GemmaAPI data frame. I'd reccomend reading chapter 3 of this book. https://moderndive.com/3-wrangling.html
+7)use dplyr to create a simple GemmaAPI df that only contains information that we need to answer our questions.
+
+
