@@ -1,10 +1,11 @@
 # History files
 .Rhistory
 .Rapp.history
-
+*.json
 # Session Data files
 .RData
-
+# Virtual env
+curator
 # User-specific files
 .Ruserdata
 
