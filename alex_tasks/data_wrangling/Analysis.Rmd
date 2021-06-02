@@ -1,0 +1,166 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+### Load in all the GSEids that we will be analysing
+
+
+-> Load in your envrioment here (eg. Set GEMMAUSERNAME = "<your password here>")
+```{r}
+file.edit('~/.Renviron')
+```
+-> Rember to restart your R session now so the variables are loaded in
+
+- Pipeline the environment variables into the matlab script
+- Set timeout prevent crashing -> change if file is larger
+```{bash}
+echo -e $GEMMAUSERNAME"\n"$GEMMAPASSWORD | timeout 30s /space/opt/matlab/R2018a/bin/matlab -r 'getGemmaInfo("GSEids.csv",0);'
+  
+```
+
+- Load Original GSE
+```{r message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+col_types <- cols('shortName' = col_character())
+GSEids_before <- read_csv("GSEids.csv", col_types = col_types)
+GSEids_before <- GSEids_before[!duplicated(GSEids_before$shortName), ]
+cat("Total ", nrow(GSEids_before), " GSEs for input")
+```
+
+- Load data after the getGemmaInfo.m
+```{r message=FALSE, warning=FALSE}
+library(readr)
+GSEid_after <- read_csv("nextGemmaAPI.txt")
+GSEid_after <- GSEid_after[!duplicated(GSEid_after$shortName), ]
+```
+
+- Find which GSEs are in spreadsheets and in GEMMA
+```{r}
+count_in <- 0
+cat("GSEs that are in GEMMA: ")
+for (x in unlist(GSEid_after %>% select("shortName"))) {
+  if (count_in %% 10 == 0){
+    cat("\n", x, " ")
+  }else {
+    cat(x, " ")
+  }
+  count_in <- count_in + 1
+}
+cat("\n\nTotal GSEs in GEMMA: ",   count_in)
+```
+
+
+- Find what GSEs are in spreadsheet but not in Gemma
+```{r}
+cat("These are the GSEs not in Gemma: ")
+diff <-setdiff(
+GSEids_before %>%
+  select("shortName") %>% unlist()
+,
+GSEid_after %>%
+  select("shortName") %>% unlist())
+count <- 0
+for (x in diff) {
+  if (count %% 10 == 0){
+    cat("\n", x, " ")
+    count <- count + 1 
+  }else {
+    cat("\n", x, " ")
+    count <- count + 1 
+  }
+}
+cat("\n\nThere are ", count, " GSEs in total not in Gemma")
+
+
+```
+
+- Find which GSEs are public and how many
+```{r}
+count_public <- 0
+cat("GSEs that are public in GEMMA: ")
+for (x in unlist(GSEid_after %>% filter(isPublic == 1) %>% select("shortName"))) {
+  if (count_public %% 10 == 0){
+    cat("\n", x, " ")
+  }else {
+    cat(x, " ")
+  }
+  count_public <- count_public + 1
+}
+cat("\n\nThere are ", count_public, " GSEids public")
+count_private <- 0
+ cat("\n\nThese are the none public GSE in GEMMA: ")
+for (x in unlist(GSEid_after %>% filter(isPublic == 0) %>% select("shortName"))) {
+  if (count_private %% 10 == 0){
+    cat("\n", x, " ")
+  }else {
+    cat(x, " ")
+  }
+  count_private <- count_private + 1
+}
+ cat("\n\nThere are ", count_private, " GSEids public")
+```
+
+
+```{r}
+library(gemmaAPI)
+no_dea <- c()
+setGemmaUser(Sys.getenv("GEMMAUSERNAME"), Sys.getenv("GEMMAPASSWORD"))
+for (gse in unlist(GSEid_after %>% select("shortName"))){
+  test <- datasetInfo(dataset = gse, request ="differential", memoised=TRUE)
+  if (length(test) == 0) {
+    no_dea <- c(no_dea, gse)
+  }
+}
+cat("\nThese are the GSEs without DEA: ")
+no_dea_count <- 0
+for (gse in no_dea) {
+   if (count %% 10 == 0){
+    cat("\n", gse, " ")
+     no_dea_count <- no_dea_count + 1
+  }else {
+    cat(gse, " ")
+    no_dea_count <- no_dea_count + 1
+  }
+}
+cat("\nIn total there are ", no_dea_count, " GSEs without DEA\n")
+
+cat("\nThese are the GSEs with DEA: ")
+dea_count <- 0
+for (gse in setdiff (GSEid_after %>% select("shortName") %>% unlist(), no_dea))) {
+   if (dea_count_DEA %% 10 == 0){
+    cat("\n", gse, " ")
+     dea_count <- dea_count + 1
+  }else {
+    cat(gse, " ")
+    dea_count <- dea_count + 1
+  }
+}
+cat("\nIn total there are ", dea_count, "GSEs with DEA")
+```
+
+```{r}
+library(ggplot2)
+df <- data.frame(where=c("Not in Gemma", "In Gemma"),
+                 count=c(nrow(GSEids_before) - nrow(GSEid_after), nrow(GSEid_after)))
+p <- ggplot(data=df, map=aes(x=where, y=count))
+p + geom_bar(stat="identity", color="blue", fill="steelblue")  + geom_text(aes(label=count), vjust=1.6, color="black", size=3.5) + theme_classic()
+```
+```{r}
+library(ggplot2)
+
+p <- ggplot(data=GSEid_after, map=aes(x=factor(isPublic, labels=c("Public", "Not Public"))))
+p + geom_bar(stat="count", color="blue", fill="steelblue")  + geom_text(aes(label=..count..), stat="count", color="black", size=3.5) + theme_classic()
+```
+```{r}
+library(ggplot2)
+df <- data.frame(where=c("Has DEA", "No DEA"),
+                 count=c(dea_count, no_dea_count))
+p <- ggplot(data=df, map=aes(x=where, y=count))
+p + geom_bar(stat="identity", color="blue", fill="steelblue")  + geom_text(aes(label=count), vjust=1.6, color="black", size=3.5) + theme_classic()
+```
+
+
+
+
