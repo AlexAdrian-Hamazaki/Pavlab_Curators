@@ -8,9 +8,10 @@ if(length(new.packages)) install.packages(new.packages)
 
 ## Import packages
 library(tidyverse)
-library(dplyr)
+library(dplyr) #---AAA redundant. under tidyverse
 library(data.table)
 
+#---AAA consider https://googlesheets4.tidyverse.org/ for auto-downloading google sheets
 #import df
 raw_list <- fread('BlackList.csv', header = TRUE, quote = "\"", sep=',')
 
@@ -43,6 +44,7 @@ raw_list <- fread('BlackList.csv', header = TRUE, quote = "\"", sep=',')
   
   
 regex_check <- function(x){
+  #---AAA What is x?
   ## ----------------------- actual matching function -------------------- ##
   ## More conditions can be added using the same ifelse format
   ifelse(grepl(taxon, tolower(x)),text_taxon,
@@ -69,6 +71,14 @@ regex_check <- function(x){
     )
   )
 }
+###---AAA pipelines typically read like this It will make it easier to view
+# processed_list <- raw_list %>% 
+#   mutate(processed_reason=regex_check(Reason))%>%
+#   filter() %>%
+#   select() %>%
+#   summarize()
+
+
   
 ### Create a new column that has all the standardized reasons
 processed_list <- raw_list %>% mutate(processed_reason=regex_check(Reason))
@@ -82,9 +92,14 @@ double_check_list <- processed_list %>% filter(processed_reason  %in% false_posi
 
 good_list <- processed_list %>% filter(!processed_reason %in% false_positives)
 
+
+###---AAA I belive you could use https://googlesheets4.tidyverse.org/ also to write str8 to the sheet. Not necessary, but could be cool/nice 
 write_csv(full_list, 'full_list.csv')
 write_csv(double_check_list, 'double_check_list.csv')
 write_csv(good_list, 'good_list.csv')
+###---AAA could name good_list to something more explicetly indicating that they should be blacklisted
+
+
 
 
 
