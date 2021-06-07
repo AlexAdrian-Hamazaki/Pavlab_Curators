@@ -1,6 +1,6 @@
 running_dir <- "~/R_scripts/gemma_API"
 
-target_dir <- "~/R_scripts/gemma_API"
+target_dir <- "~/sheet_cleanup/problems"
 input_GSEids <- "input_GSEids"
 
 username <-  "alexadrianhamazaki"
@@ -12,8 +12,12 @@ setwd(running_dir)
 #---Check to see if the input GSEid file exists/ is in the right place
 stopifnot(file.exists(paste0(target_dir,"/",input_GSEids)))
 
-#---set results dir, lcoation to save files
+#---set results dir, lcoation to save files. Create results dir if it does not exist
 results_dir <- paste0(target_dir,"/","results")
+
+if (!dir.exists(paste0(results_dir))) {
+  dir.create(paste0(results_dir))
+}
 
 #--- load functions
 source("main/functions.R")
