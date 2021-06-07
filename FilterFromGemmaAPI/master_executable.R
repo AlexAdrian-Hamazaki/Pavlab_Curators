@@ -1,7 +1,7 @@
-running_dir <- "~/R_scripts/gemma_API"
+running_dir <- "~/Projects/Pavlab_Curators/FilterFromGemmaAPI"
 
-target_dir <- "~/sheet_cleanup/problems"
-input_GSEids <- "input_GSEids"
+target_dir <- "~/sheet_cleanup/clean_master"
+input_GSEids <- "inputGSEids.txt"
 
 username <-  "alexadrianhamazaki"
 password <- "Doglukepotato3!"
@@ -51,4 +51,4 @@ source("main/generate_summary_stats.R")
 
 source('main/action_knowledge.R')
 
-
+getwd()
