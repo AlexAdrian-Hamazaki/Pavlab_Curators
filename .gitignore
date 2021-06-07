@@ -1,15 +1,10 @@
 # History files
 .Rhistory
 .Rapp.history
-
+*.json
 # Session Data files
 .RData
 
-#virtual enviroment
-curator
-
-#vscode settings
-*.json
 # User-specific files
 .Ruserdata
 
