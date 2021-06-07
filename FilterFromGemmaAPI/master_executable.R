@@ -47,4 +47,8 @@ source("main/filter_for_complete_GSEs.R")
 
 source("main/generate_summary_stats.R")
 
+#---Use the tables to get the GSEs that need action
+
+source('main/action_knowledge.R')
+
 
