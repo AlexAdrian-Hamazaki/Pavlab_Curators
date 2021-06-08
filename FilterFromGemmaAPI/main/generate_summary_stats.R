@@ -30,7 +30,7 @@ ab_GSEs <- read_delim(paste0(results_dir,"/","filter_by_technology/","ab_experim
 pacbio_GSEs <- read_delim(paste0(results_dir,"/","filter_by_technology/","pacbio_experiments"), delim = "\n", col_names = FALSE)
 
 #---in Gemma or not
-total_GSE_input <- read_delim(paste0(target_dir,"/","input_GSEids_unique"),  delim = "\n", col_names = FALSE)
+total_GSE_input <- read_delim(paste0(results_dir,"/","input_GSEids_unique"),  delim = "\n", col_names = FALSE)
 GSEs_in_gemma <- read_delim(paste0(results_dir,"/", "GSEs_in_gemma_or_not", "/","GSEs_in_gemma"), delim = "\n", col_names = FALSE)
 GSEs_not_in_gemma <- read_delim(paste0(results_dir,"/", "GSEs_in_gemma_or_not", "/","GSEs_not_in_gemma"), delim = "\n", col_names = FALSE)
 

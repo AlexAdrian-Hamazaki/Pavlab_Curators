@@ -49,6 +49,12 @@ for (x in unlist(GSEid_after %>% select("shortName"))) {
   count_in <- count_in + 1
 }
 cat("\n\nTotal GSEs in GEMMA: ",   count_in)
+
+
+#####The "R" way to do it
+GSEid_in_gemma_and_input <- GSEid_after %>%
+  select("shortName") %>%
+  filter(GSEid_after$shortName %in% GSEids_before$shorName)
 ```
 
 

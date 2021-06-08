@@ -1,7 +1,7 @@
-running_dir <- "~/R_scripts/gemma_API"
+running_dir <- "~/Projects/Pavlab_Curators/FilterFromGemmaAPI"
 
-target_dir <- "~/R_scripts/gemma_API"
-input_GSEids <- "input_GSEids"
+target_dir <- "~/sheet_cleanup/clean_master"
+input_GSEids <- "inputGSEids.txt"
 
 username <-  "alexadrianhamazaki"
 password <- "Doglukepotato3!"
@@ -12,8 +12,12 @@ setwd(running_dir)
 #---Check to see if the input GSEid file exists/ is in the right place
 stopifnot(file.exists(paste0(target_dir,"/",input_GSEids)))
 
-#---set results dir, lcoation to save files
+#---set results dir, lcoation to save files. Create results dir if it does not exist
 results_dir <- paste0(target_dir,"/","results")
+
+if (!dir.exists(paste0(results_dir))) {
+  dir.create(paste0(results_dir))
+}
 
 #--- load functions
 source("main/functions.R")
@@ -43,4 +47,8 @@ source("main/filter_for_complete_GSEs.R")
 
 source("main/generate_summary_stats.R")
 
+#---Use the tables to get the GSEs that need action
 
+source('main/action_knowledge.R')
+
+getwd()
