@@ -4,8 +4,12 @@
 *.json
 # Session Data files
 .RData
-# Virtual env
+
+#virtual enviroment
 curator
+
+#vscode settings
+*.json
 # User-specific files
 .Ruserdata
 
