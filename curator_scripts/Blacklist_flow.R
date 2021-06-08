@@ -140,7 +140,7 @@ raw_list <- raw_list %>%
              )
            )
     )
-           }
+  }
   
   
 ### Create a new column that has all the standardized reasons
