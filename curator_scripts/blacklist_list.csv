@@ -1,0 +1,157 @@
+Accession,Reason,Name,processed_reason
+GSE10889,quality,Expression Profiling of the Developing Mouse Lung,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE166097,Pipeline,Murine hippocampus: Scramble (control) vs Antagomir-134,Pipeline problem full stop as indicated on the master sheet
+GSE66540,platform,A potential role for snoRNA in PKR activation during metabolic stress,Platform issue. Unsupported Platform/unusable platform
+GSE67933,pipeline,RNA profiling by deepSAGE sequencing in the cortex of a migraine mouse model after induction of cortical spreading depression,Pipeline problem full stop as indicated on the master sheet
+GSE69104,pipeline,A  paracrine IGF1/IGF1R-PI3K signaling loop underlies resistance to CSF-1R inhibition in GBM,Pipeline problem full stop as indicated on the master sheet
+GSE53696,pipeline,nELAVL HITS-CLIP in IMR-32 neuroblastoma cells,Pipeline problem full stop as indicated on the master sheet
+GSE51424.1,quality,Cell type-specific ribosome profiling in vivo.,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE66478,single cell experiment,Biochemical fractionation of HEK293 nuclei and RNA-seq of chromatin-associated and soluble-nuclear RNA,Single cell Experiment
+GSE53638,single cell exepriment,Characterization of differentiating adipose cells by high-throughput single-cell RNA-Seq,Single cell Experiment
+GSE77564,single cell exepriment,Coupled electrophysiological recording and single-cell transcriptome analyses revealed molecular mechanisms underlying neuronal maturation,Single cell Experiment
+GSE43431,quality,Extensive changes in DNA methylation are associated with expression of mutant huntingtin [mRNA-seq],Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE39866,quality,A comprehensive view of the transcriptome during development of the mouse cerebral cortex,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE22917,stop on RNA-SEQ,"SAGE-Seq gene expression profiles of Hs578T, MCF7, and SUM159PT cells treated with STAT3 or non-targeting siRNAs, DMSO, or CXCR2, PTGIS, HAS1, PFKFB3, JAK, or NQO1 inhibitor",Pipeline problem full stop as indicated on the master sheet
+GSE14362,stop on RNA-SEQ,Genome-wide annotation of small RNAs expressed in HeLa and HepG2 cells,Pipeline problem full stop as indicated on the master sheet
+GSE23316,stop on RNA-SEQ,ENCODE Caltech RNA-seq,Pipeline problem full stop as indicated on the master sheet
+GSE95194,stop on RNA-SEQ,Single-Cell RNA-seq study of E13.5 and P7 brain and Spinal Cord Pdgfra-GFP positive samples during development in Mice.,Pipeline problem full stop as indicated on the master sheet
+GSE117174,unusable,Transcriptional profiling of drug-induced changes in mice nucleus accumbens and prefrontal cortex,Platform issue. Unsupported Platform/unusable platform
+GSE113396,unusable,Potential role of gas6 in zebrafish hindbrain development,Platform issue. Unsupported Platform/unusable platform
+GSE116215,unusable,Zebrafish control and csf1r mutant microglia transcriptomes,Platform issue. Unsupported Platform/unusable platform
+GSE116216,unusable,Zebrafish control and csf1r mutant brain transcriptomes,Platform issue. Unsupported Platform/unusable platform
+GSE113437,unusable,Analysis of novel caudal hindbrain genes reveals different regulatory logic for gene expression in rhombomere 4 versus 5/6 in embryonic zebrafish,Platform issue. Unsupported Platform/unusable platform
+GSE103005,single sample for each condition,Whole blood gene expression profiling of multiplex multiple sclerosis family,Single cell Experiment
+GSE30286,pipeline,Cell-type based analysis of microRNA profiles in the mouse brain,Pipeline problem full stop as indicated on the master sheet
+GSE97353,sc,Comparison of scAAV9-CßA and scAAV9-U6 driven artificial miRNAs targeting human huntingtin,Single cell Experiment
+GSE2854,dyeswap,Comparison of Rostral and Caudal murine neocortex at E11.5,Unsupported Design; Dye-Swap
+GSE23525,sc,Alternative transcription exceeds alternative splicing in generating the transcriptome diversity of cerebellar development,Single cell Experiment
+GSE66710,stop on pipeline,LRP8-Reelin-regulated Neuronal (LRN) Enhancer signature underlying learning and memory formation,Pipeline problem full stop as indicated on the master sheet
+GSE85959,non-Z-score data is available as a supplement,"Basic Helix Loop Helix Enhancer 40 Null Mice Have Impaired Synaptic Plasticity, Enhanced Neuronal Excitability, and Decreased Expression of Insulin Degrading Enzyme","Zscore used as values, unsupported unit"
+GSE100007,pipeline,Widespread translational remodeling during human neuronal differentiation,Pipeline problem full stop as indicated on the master sheet
+GSE100046,z score,Activity-dependent neuronal Klotho enhances astrocytic aerobic glycolysis,"Zscore used as values, unsupported unit"
+GSE102623,platform not supported by our pipeline,Hippocampus and hypothalamus RNA-sequencing of WFS1-deficient mice [hippocampus],Platform issue. Unsupported Platform/unusable platform
+GSE10291,dyeswap,Identification of Tmem10/Opalin as a novel marker for oligodendrocytes using gene expression profiling,Unsupported Design; Dye-Swap
+GSE103312,troubled affy platform,Role of ERb in neural differentiation of mouse embryonic stem cells,Platform issue. Unsupported Platform/unusable platform
+GSE10782,stop,Solexa / Illumina deep sequencing of the hippocampal transcriptome of wild-type and DLCK transgenic mice,Pipeline problem full stop as indicated on the master sheet
+GSE110115,Paltform unusable,Identifiation of lncRNA expression profiles and ceRNA analysis in the spinal cord of morphine tolerance rats,Platform issue. Unsupported Platform/unusable platform
+GSE112935,stop,RNA-seq analysis dataset: FACS-sorted Ptf1a-lineage cells from E14.5 hypothalamus of Ptf1a hetero and homozygous mice,Pipeline problem full stop as indicated on the master sheet
+GSE16035,unusable,Global gene profiling comparison between hydrogen sulfide- and N-methyl-D-aspartate-induced neuronal deaths,Platform issue. Unsupported Platform/unusable platform
+GSE17117,zscore,Differential response of C57BL/6J mouse and DBA/2J mouse to optic nerve crush,"Zscore used as values, unsupported unit"
+GSE21161,platform unusable,Widespread transcription at neuronal activity-regulated enhancers,Platform issue. Unsupported Platform/unusable platform
+GSE22473,dyeswap,Murine postnatal subventricular zone (SVZ) neural stem cells (NSCs): Wild-type (WT) vs. Dnmt3a-null (KO),Unsupported Design; Dye-Swap
+GSE22758,affy blackist platform,Wild type vs. Nova2 KO mouse E14.5 cortex RNA,Platform issue. Unsupported Platform/unusable platform
+GSE24423,platform unusable,Transcriptomic characterization of the diabetic retinal response to chronic insulin treatment,Platform issue. Unsupported Platform/unusable platform
+GSE24935,zscore,Toll-like receptor 2 (TLR2)-TLR9 crosstalk dictates IL-12 family cytokine production in microglia,"Zscore used as values, unsupported unit"
+GSE33307,quality,Sexually Dimorphic Gene Expression in the Adult Mouse Hypothalamus and Bed Nucleus of the Stria Terminalis,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE35180,plateform unusable,Effects of diet and Acads genotype on transcriptional response in brain and liver,Platform issue. Unsupported Platform/unusable platform
+GSE35238,sample size too small,5-hydroxymethylcytosine is linked with expression of brain-specific protein-coding genes but not brain-specific microRNA host genes,Sample size too small. Usually experiments with total samples < 3
+GSE36395,platform unusable,Efficient Generation of Integration-free and Engraftable induced Neural Stem Cells (iNSC) from Epithelial-like Cells in Human Urine,Platform issue. Unsupported Platform/unusable platform
+GSE37547,platform unusable,GENETIC CORRECTION OF HUNTINGTON'S DISEASE PHENOTYPES IN INDUCED PLURIPOTENT STEM CELLS,Platform issue. Unsupported Platform/unusable platform
+GSE37908,platform,Muscleblind-Like 2 Mediated Alternative Splicing in the Developing Brain,Platform issue. Unsupported Platform/unusable platform
+GSE37908,platform unusable,Muscleblind-Like 2 Mediated Alternative Splicing in the Developing Brain,Platform issue. Unsupported Platform/unusable platform
+GSE38394,platform unusable,Differentially regulted genes in neural stem cells treated by oleanolic acid,Platform issue. Unsupported Platform/unusable platform
+GSE39191,platform unusable,P0-cre marked neural crest cells in murine embryo,Platform issue. Unsupported Platform/unusable platform
+GSE39811,platform unusable,"Gene expression changes in Dhcr7 knockout brain, lung and liver at E18.5 compared to wild-type embryos",Platform issue. Unsupported Platform/unusable platform
+GSE2855,Dye swap experiment,Comparison of Rostral and Caudal murine neocortex at E13.5,Unsupported Design; Dye-Swap
+GSE29541,Dye swap experiment,"Mice with targeted deletion of Nxf7, the murine ortholog of the clinically implicated NXF5, display impaired hippocampal learning and neuroplasticity",Unsupported Design; Dye-Swap
+GSE28523,single cell,Transcriptomes of subthalamic nuclei from mice submitted to a short-term cocaine-dependent conditioned place preference,Single cell Experiment
+GSE49684,platform unusable,Mouse Fetal Cortical-derived Neurosphere cultures transfected with null control or miRNA-153 mimetic,Platform issue. Unsupported Platform/unusable platform
+GSE97353,scRNA,Comparison of scAAV9-CßA and scAAV9-U6 driven artificial miRNAs targeting human huntingtin,Single cell Experiment
+GSE37521,very few map reads. quality,RNA-Seq Analysis Reveals Different Dynamics of Differentiation of Human Dermis- and Adipose-derived Stromal Stem Cells,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE106678,scRNA,Dissecting cell-type composition and activity-dependent transcriptional state in mammalian brains by massively parallel single-nucleus RNA-Seq,Single cell Experiment
+GSE43520.1,lncRNA,The evolution of lncRNA repertoires and expression patterns in tetrapods,Long non-coding RNA Experiment
+GSE43520.3,lncRNA,The evolution of lncRNA repertoires and expression patterns in tetrapods,Long non-coding RNA Experiment
+GSE67310,scRNA,Dissecting the direct reprogramming path of fibroblasts into neurons by single cell RNA-sequencing,Single cell Experiment
+GSE130950,scRNA,RNA-seq data of PatchSeq dataset from Pvalb-Cre positive interneurons in the mouse hippocamus CA1 region,Single cell Experiment
+GSE124681,unavailable,An Excitatory Circuit in Perioculomotor Midbrain for Non-REM Sleep Control,Insufficent available information in paper/GEO
+GSE129150,scRNA,Sensory lesioning induces microglial synapse elimination via ADAM10 and fractalkine signaling,Single cell Experiment
+GSE108356,scRNA,Epigenetic regulation of brain region-specific microglia clearance activity,Single cell Experiment
+GSE53638,scRNA,Characterization of differentiating adipose cells by high-throughput single-cell RNA-Seq,Single cell Experiment
+GSE107115,scRNA,Subcellular genomics shows pervasive within-mitochondrion single nucleotide variant heteroplasmy as revealed by single mitochondrion sequencing,Single cell Experiment
+GSE115480,scRNA,Comprehensive catalog of dendritically localized mRNA isoforms from sub-cellular sequencing of single mouse neurons,Single cell Experiment
+GSE124439,unavailable,"Postmortem Cortex Samples Identify Distinct Molecular Subtypes of ALS: Retrotransposon Activation, Oxidative Stress, and Activated Glia",Insufficent available information in paper/GEO
+GSE119248,scRNA,PatchSeq analysis of Pthlh expressing cells of the mouse dorsolateral striatum,Single cell Experiment
+GSE107740,scRNA,A comprehensive map coupling histone modifications with gene regulation in adult dopaminergic and serotonergic neurons [scRNA-Seq],Single cell Experiment
+GSE107181,LncRNA,Comprehensive analysis of Long non-coding RNA expression in dorsal root ganglion reveals cell type specificity and dysregulation following nerve injury [human iPS],Long non-coding RNA Experiment
+GSE123666,duplicate,mRNASeq and miRNASeq of z_Q175 knock-in mouse lines with and without neo cassette,"Duplicated experiment, samples already in other GSE"
+GSE131102,not relevant,Synthetic lethal and resistance interactions with BET bromodomain inhibitors,This experiment is not relevant to our interest
+GSE49581,LncRNA,RNA-Seq characterization of select lincRNA knockout mouse models,Long non-coding RNA Experiment
+GSE158470,scRNA,Transcriptomic and functional deficits in human TREM2-/- microglia impair response to Alzheimer's pathology in vivo,Single cell Experiment
+GSE154048,scRNA,The cellular basis of distinct thirst modalities,Single cell Experiment
+GSE113943,platform unusable,The response of the hypothalamus to leptin and a high-fat diet in mice,Platform issue. Unsupported Platform/unusable platform
+GSE148077,scRNA,Cell atlas of the human fovea and peripheral retina,Single cell Experiment
+GSE154178,scRNA,Deconstructing Stepwise Fate Conversion of Human Fibroblasts to Neurons by MicroRNAs,Single cell Experiment
+GSE154048,scRNA,The cellular basis of distinct thirst modalities,Single cell Experiment
+GSE19401,unavailable,Expression data from murine follicular dendritic cells,Insufficent available information in paper/GEO
+GSE6339,unsupported platform,Expression data from 12 human thyroid tissue classes and 2 cell lines,Platform issue. Unsupported Platform/unusable platform
+GSE67763,pipeline problem,The tumor virus landscape of AIDS-related lymphomas,Pipeline problem full stop as indicated on the master sheet
+GSE64018,pipeline problem,RNA-seq of autistic and control cortex,Pipeline problem full stop as indicated on the master sheet
+GSE66540,platform,A potential role for snoRNA in PKR activation during metabolic stress,Platform issue. Unsupported Platform/unusable platform
+GSE67933,pipeline problem,RNA profiling by deepSAGE sequencing in the cortex of a migraine mouse model after induction of cortical spreading depression,Pipeline problem full stop as indicated on the master sheet
+GSE69104,pipeline problem,A  paracrine IGF1/IGF1R-PI3K signaling loop underlies resistance to CSF-1R inhibition in GBM,Pipeline problem full stop as indicated on the master sheet
+GSE53696,pipeline problem,nELAVL HITS-CLIP in IMR-32 neuroblastoma cells,Pipeline problem full stop as indicated on the master sheet
+GSE66478,scRNA,Biochemical fractionation of HEK293 nuclei and RNA-seq of chromatin-associated and soluble-nuclear RNA,Single cell Experiment
+GSE60599,pipline problem,Genome wide transcriptome analysis of skin harboring tissue-resident memory CD8+ T cells,Pipeline problem full stop as indicated on the master sheet
+GSE53638,scRNA,Characterization of differentiating adipose cells by high-throughput single-cell RNA-Seq,Single cell Experiment
+GSE77564,scRNA,Coupled electrophysiological recording and single-cell transcriptome analyses revealed molecular mechanisms underlying neuronal maturation,Single cell Experiment
+GSE52525,scRNA,Transcriptome In Vivo Analysis (TIVA) of spatially defined single cells in intact live mouse and human brain tissue,Single cell Experiment
+GSE43431,sample size,Extensive changes in DNA methylation are associated with expression of mutant huntingtin [mRNA-seq],Sample size too small. Usually experiments with total samples < 3
+GSE116969,pipeline,"A GENETIC, GENOMIC, AND COMPUTATIONAL RESOURCE FOR EXPLORING NEURAL CIRCUIT FUNCTION",Pipeline problem full stop as indicated on the master sheet
+GSE95194,scRNA,Single-Cell RNA-seq study of E13.5 and P7 brain and Spinal Cord Pdgfra-GFP positive samples during development in Mice.,Single cell Experiment
+GSE117174,unsupported platform,Transcriptional profiling of drug-induced changes in mice nucleus accumbens and prefrontal cortex,Platform issue. Unsupported Platform/unusable platform
+GSE113396,unsupported platform,Potential role of gas6 in zebrafish hindbrain development,Platform issue. Unsupported Platform/unusable platform
+GSE116215,unsupported platform,Zebrafish control and csf1r mutant microglia transcriptomes,Platform issue. Unsupported Platform/unusable platform
+GSE116216,unsupported platform,Zebrafish control and csf1r mutant brain transcriptomes,Platform issue. Unsupported Platform/unusable platform
+GSE113437,unsupported platform,Analysis of novel caudal hindbrain genes reveals different regulatory logic for gene expression in rhombomere 4 versus 5/6 in embryonic zebrafish,Platform issue. Unsupported Platform/unusable platform
+GSE23525,scRNA,Alternative transcription exceeds alternative splicing in generating the transcriptome diversity of cerebellar development,Single cell Experiment
+GSE2854,dyeswap,Comparison of Rostral and Caudal murine neocortex at E11.5,Unsupported Design; Dye-Swap
+GSE85959,non-Z-score data is available as a supplement,"Basic Helix Loop Helix Enhancer 40 Null Mice Have Impaired Synaptic Plasticity, Enhanced Neuronal Excitability, and Decreased Expression of Insulin Degrading Enzyme","Zscore used as values, unsupported unit"
+GSE100007,stop,Widespread translational remodeling during human neuronal differentiation,Pipeline problem full stop as indicated on the master sheet
+GSE100046,z-score,Activity-dependent neuronal Klotho enhances astrocytic aerobic glycolysis,"Zscore used as values, unsupported unit"
+GSE102623,platform,Hippocampus and hypothalamus RNA-sequencing of WFS1-deficient mice [hippocampus],Platform issue. Unsupported Platform/unusable platform
+GSE10291,dye swap,Identification of Tmem10/Opalin as a novel marker for oligodendrocytes using gene expression profiling,Unsupported Design; Dye-Swap
+GSE103312,platform,Role of ERb in neural differentiation of mouse embryonic stem cells,Platform issue. Unsupported Platform/unusable platform
+GSE10782,pipeline problem,Solexa / Illumina deep sequencing of the hippocampal transcriptome of wild-type and DLCK transgenic mice,Pipeline problem full stop as indicated on the master sheet
+GSE109055,z-score,NAD+ supplementation normalizes key Alzheimer’s features and DNA damage in a new AD mouse model with introduced DNA repair deficiency,"Zscore used as values, unsupported unit"
+GSE110115,unsupported platform,Identifiation of lncRNA expression profiles and ceRNA analysis in the spinal cord of morphine tolerance rats,Platform issue. Unsupported Platform/unusable platform
+GSE11149,unavailable,Cranial neural crest cells of E11.5 wild type and FAK mutants (valle-affy-mouse-480721),Insufficent available information in paper/GEO
+GSE112935,stop,RNA-seq analysis dataset: FACS-sorted Ptf1a-lineage cells from E14.5 hypothalamus of Ptf1a hetero and homozygous mice,Pipeline problem full stop as indicated on the master sheet
+GSE16035,unusable (githubpost 76),Global gene profiling comparison between hydrogen sulfide- and N-methyl-D-aspartate-induced neuronal deaths,Platform issue. Unsupported Platform/unusable platform
+GSE17117,z-scores,Differential response of C57BL/6J mouse and DBA/2J mouse to optic nerve crush,"Zscore used as values, unsupported unit"
+GSE21161,unsupported platform,Widespread transcription at neuronal activity-regulated enhancers,Platform issue. Unsupported Platform/unusable platform
+GSE22473,dyeswap,Murine postnatal subventricular zone (SVZ) neural stem cells (NSCs): Wild-type (WT) vs. Dnmt3a-null (KO),Unsupported Design; Dye-Swap
+GSE22758,quality,Wild type vs. Nova2 KO mouse E14.5 cortex RNA,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE24423,unsupported platform,Transcriptomic characterization of the diabetic retinal response to chronic insulin treatment,Platform issue. Unsupported Platform/unusable platform
+GSE24935,z-scores,Toll-like receptor 2 (TLR2)-TLR9 crosstalk dictates IL-12 family cytokine production in microglia,"Zscore used as values, unsupported unit"
+GSE33307,unavailable,Sexually Dimorphic Gene Expression in the Adult Mouse Hypothalamus and Bed Nucleus of the Stria Terminalis,Insufficent available information in paper/GEO
+GSE35180,unsupported platform,Effects of diet and Acads genotype on transcriptional response in brain and liver,Platform issue. Unsupported Platform/unusable platform
+GSE35238,sample size,5-hydroxymethylcytosine is linked with expression of brain-specific protein-coding genes but not brain-specific microRNA host genes,Sample size too small. Usually experiments with total samples < 3
+GSE36395,unsupported platform,Efficient Generation of Integration-free and Engraftable induced Neural Stem Cells (iNSC) from Epithelial-like Cells in Human Urine,Platform issue. Unsupported Platform/unusable platform
+GSE37547,unsupported platform,GENETIC CORRECTION OF HUNTINGTON'S DISEASE PHENOTYPES IN INDUCED PLURIPOTENT STEM CELLS,Platform issue. Unsupported Platform/unusable platform
+GSE37908,platform unusable,Muscleblind-Like 2 Mediated Alternative Splicing in the Developing Brain,Platform issue. Unsupported Platform/unusable platform
+GSE38394,platform unusable,Differentially regulted genes in neural stem cells treated by oleanolic acid,Platform issue. Unsupported Platform/unusable platform
+GSE39191,platform unusable,P0-cre marked neural crest cells in murine embryo,Platform issue. Unsupported Platform/unusable platform
+GSE39811,platform unusable,"Gene expression changes in Dhcr7 knockout brain, lung and liver at E18.5 compared to wild-type embryos",Platform issue. Unsupported Platform/unusable platform
+GSE28523,single cell,Transcriptomes of subthalamic nuclei from mice submitted to a short-term cocaine-dependent conditioned place preference,Single cell Experiment
+GSE2855,dye swap,Comparison of Rostral and Caudal murine neocortex at E13.5,Unsupported Design; Dye-Swap
+GSE29541,dye swap,"Mice with targeted deletion of Nxf7, the murine ortholog of the clinically implicated NXF5, display impaired hippocampal learning and neuroplasticity",Unsupported Design; Dye-Swap
+GSE49684,platform unusable,Mouse Fetal Cortical-derived Neurosphere cultures transfected with null control or miRNA-153 mimetic,Platform issue. Unsupported Platform/unusable platform
+GSE15301,species,Identification of brain transcriptional variability reproduced in peripheral blood: an approach for mapping brain eQTLs,Unsupported Taxon
+GSE144071,platform unusable,"RNAseq of whole striatum from hypothyroid mice, and hypothyroid mice treated with thyroid hormone for 2 days.",Platform issue. Unsupported Platform/unusable platform
+GSE148077,scRNA,Cell atlas of the human fovea and peripheral retina,Single cell Experiment
+GSE142546,scRNA,Transcriptomic continuity and an age-dependent onset of hemoglobin expression characterize morphological PV types in the hippocampus,Single cell Experiment
+GSE37005.2,Unsupported Taxon,Topology of the human and mouse m6A RNA methylomes revealed by m6A-seq,Unsupported Taxon
+GSE60198.1,Unsupported Taxon,The Mpn1 exonuclease defines a novel spliceosomal snRNA decay pathway dependent on Rrp6 and Lsm2-8 complex,Unsupported Taxon
+GSE101297.1,Unsupported Taxon,c-MYC drives a subset of high-risk pediatric neuroblastomas and is activated through mechanisms including enhancer hijacking and focal enhancer amplification,Unsupported Taxon
+GSE42371,dye swap,Mouse cerebellum: Smarca5 conditional KO mice (cKO) versus wild type controls,Unsupported Design; Dye-Swap
+GSE53761,quality,Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus,Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data
+GSE60241,platform,The RNA-binding protein Sfpq regulates long neuronal genes in transcriptional elongation [Neuro2A cells],Platform issue. Unsupported Platform/unusable platform
+GSE64607,z-score,Exercise-mimetic AICAR transiently benefits brain function,"Zscore used as values, unsupported unit"
+GSE66696,platform,Whole brain RNA from congenic littermates does not support a general effect of Nxf1 CAST alleles on alternative pre-mRNA processing,Platform issue. Unsupported Platform/unusable platform
+GSE66750,dyeswap,WB001A: Genome-wide analysis reveals NRP1 as a critical HIF1-E2F7 target gene in the regulation of motor neuron guidance in vivo,Unsupported Design; Dye-Swap
+GSE66762,dyeswap,HT-project: Expression profiling after prolonged experimental febrile seizures suggests structural remodeling in the hippocampus,Unsupported Design; Dye-Swap
+GSE67870,dyeswap,Brain microvessels ontogeny-ERI-INSERM28,Unsupported Design; Dye-Swap
+GSE6983,z-score,TRF2 Inhibition-Mediated Degradation Derepresses the Neuronal Differentiation Program,"Zscore used as values, unsupported unit"
+GSE74138,pipeline problem,RNA-Seq analysis of 3 month old all Ret-positive (EGFP-labeled) dorsal root ganglia L345 or L6S1 neurons,Pipeline problem full stop as indicated on the master sheet
+GSE74210,pipeline,A Primate lncRNA Mediates Notch Signaling During Neuronal Development by Sequestering miRNA,Pipeline problem full stop as indicated on the master sheet
+GSE404,platform unusable,Effect of glutamine concentration on hepatoma cell line,Platform issue. Unsupported Platform/unusable platform
