@@ -60,7 +60,6 @@ library(tidyverse)
 
 #---Load input file
 gseids <- read.delim(paste0(target_dir, "/", input_GSEids.txt), header= FALSE)
-typeof(gseids$V1)
 
 #---Clean input file
 dictionary <- lapply(gseids, str_split, pattern = "\\.")
