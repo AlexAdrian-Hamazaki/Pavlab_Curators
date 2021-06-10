@@ -1,12 +1,27 @@
+#This scrript takes an input of GSEids, and outputs the ones that are single cell or lncRNA
+
+
+#---Installing packages
+if (!'GEOquery' %in% installed.packages()){
+  install.packages("BiocManager")
+  BiocManager::install("GEOquery")
+}
+if (!'rstudioapi' %in% installed.packages()){
+  install.packages("rstudioapi")
+}
+library(GEOquery, quietly = TRUE, verbose = FALSE)
+library(tidyverse)
+library(rstudioapi)
+
+#----------------------------------------------------
+
+
 #---Change the following variables as you desire
 
 #running_dir is the directory where you are running this code. Must be a string
 #**** Suggestiong can we use relative path so we don't need to setup enviroment differently for everyone
 #running_dir <- "~/Projects/Pavlab_Curators/scRNA_filtering"
-if (!'rstudioapi' %in% installed.packages()){
-  install.packages("rstudioapi")
-}
-library(rstudioapi)
+
 running_dir <- dirname(getActiveDocumentContext()$path)
 
 #target_dir is the directory where your input_GSEids.txt file is, and where you will output your results. By default it is == running_dir
@@ -14,17 +29,14 @@ target_dir <- running_dir
 #input_GSEids.txt is your text file with GSEIds you are testing. The file must be \n delimited
 input_GSEids.txt <- "input_GSEids.txt"
 
+#---Note: GSEs that are split (have .1, .2 ... after its GSEid), cannot be retrieved from GEO. This script takes off the split and uses the base GSE for API accession.
+#As a result, if it turns out that the base has scRNA/lnc, the outputted GSEid will NOT have the split name on it. You must manually check the outputs
+#to match the sc/lnc GSEs to their respective splits within gemma.
+
+#---Note: This script downloads a lot of information so it may take some time. We may look into using rentrez to reduce how much is downloaded
+
 #-----------------------------------------------------
 
-#---Installing packages
-if (!requireNamespace("BiocManager", quietly = TRUE)){
-  install.packages("BiocManager")
-  BiocManager::install("GEOquery")
-}
-
-library(GEOquery)
-library(tidyverse)
-#----------------------------------------------------
 
 
 # #---Get getGEO information for a GSE
@@ -64,7 +76,6 @@ library(tidyverse)
 gseids <- read.delim(paste0(target_dir, "/", input_GSEids.txt), header= FALSE)
 #typeof(gseids$V1)
 #***Using position in this case makes sure that if for some reason the name of the column is changed it will not break
-typeof(gseids[,1])
 
 
 #---Clean input file
@@ -72,7 +83,7 @@ typeof(gseids[,1])
 #length(dictionary$V1[[1]])
 #dictionary <- lapply(dictionary, function(x) <- dictionary[length(dictionary$V1)==1])
 #****** Is this what you were trying to do?
-dictionary <- lapply(gseids[,1], function(gse) gsub("\\.", "", gse))
+clean_gseids<- lapply(gseids[,1], function(gse) str_replace(pattern = "\\.[:digit:].?", replacement =  "", string = gse))
 
 #gseids_clean <- str_extract(string = "GSE15123.1", pattern = "\\..*")
 #str_view(string = "GSE15123.1", pattern = "\\..*")
@@ -84,7 +95,7 @@ dictionary <- lapply(gseids[,1], function(gse) gsub("\\.", "", gse))
 filter_scRNA <- function(GSEid) {
   
   #---Get getGEO information for a GSE
-  gse_data <- getGEO(GSEid, GSEMatrix = FALSE, destdir = target_dir, getGPL = FALSE, AnnotGPL = FALSE, parseCharacteristics = FALSE)
+  gse_data <- getGEO(GSEid, GSEMatrix = FALSE, destdir = target_dir)
   
   #---Get metadata from the gse_data
   
@@ -95,30 +106,75 @@ filter_scRNA <- function(GSEid) {
   gsm_data <- GSMList(gse_data)[[1]]
   gsm_meta <- Meta(gsm_data)
   
+  #---Delete the soft file that was just downloaded
+  file.remove(paste0(target_dir,"/",GSEid,".soft.gz"))
+  
   #---See if we can detect single cell/ single nuclus within the GSE page. If not, then we move on to exploring the GSM for it.
   #If at any point we detect a hit, we catch our error and add the given GSE to our output list
-  
   tryCatch( {
-    stopifnot(!str_detect(str_to_lower(gse_meta$overall_design), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gse_meta$summary), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gse_meta$title), pattern = (".*sc.?(rna|nucl).* | .*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$characteristics_ch1), pattern = (".*sc.?(rna|nucl).* | .*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$data_processing), pattern = (".*sc.?(rna|nucl).* | .*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$extraction_protocol_ch1), pattern = (".*sc.?(rna|nucl).* | .*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$growth_protocol_ch1), pattern = (".*sc.?(rna|nucl).* | .*single.?(cell|nucl).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$treatment_protocol_ch1), pattern = (".*sc.?(rna|nucl).* | .*single.?(cell|nucl).*")))
+    stopifnot(!str_detect(str_to_lower(gse_meta$overall_design), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gse_meta$summary), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gse_meta$title), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$characteristics_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$data_processing), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$extraction_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$growth_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$treatment_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
+    warning("not sc, testing lnc...")
   },
   error = function(cond) {
     message(paste0(GSEid," GSM is likely single cell"))
-    return (GSEid)
+    return (c(GSEid,"sc"))
+  },
+  warning = function(cond) {
+    message(cond)
+    tryCatch( 
+      {
+      stopifnot(!str_detect(str_to_lower(gse_meta$overall_design), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gse_meta$summary), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gse_meta$title), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gsm_meta$characteristics_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gsm_meta$data_processing), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gsm_meta$extraction_protocol_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gsm_meta$growth_protocol_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      stopifnot(!str_detect(str_to_lower(gsm_meta$treatment_protocol_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+    },
+    error = function(cond) {
+      message(paste0(GSEid," GSM is likely lnc"))
+      return (c(GSEid,"lnc"))
+    }
+    )
   }
   )
 }
+  
 
-scRNA_GSEids <- lapply(gseids$V1, filter_scRNA)
+# str_view(string = "we used single-cell RNA-sequencing (scRNA-seq) to analyze the transc", pattern = ".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")
 
-scRNA_GSEids_filtered <- scRNA_GSEids[lengths(scRNA_GSEids) != 0]
+questionable_GSEs <- lapply(clean_gseids, filter_scRNA)
 
-write_delim(as.data.frame(scRNA_GSEids_filtered), file = paste0(target_dir, "/", "scRNA_GSEids.txt"), delim = "\n", col_names = FALSE)
+questionable_GSEs_filtered <- questionable_GSEs[lengths(questionable_GSEs) != 0]
+
+sep_sc <- function(GSEid_with_string) { 
+  if (GSEid_with_string[2] == "sc"){
+    return (GSEid_with_string[1])
+  }
+}
+sep_lnc <- function(GSEid_with_string) { 
+  if (GSEid_with_string[2] == "lnc"){
+    return (GSEid_with_string[1])
+  }
+}
+
+scRNA_GSEs <-lapply(questionable_GSEs_filtered,sep_sc)
+scRNA_GSEs <- scRNA_GSEs[lengths(scRNA_GSEs) != 0]
+
+lnc_GSEs <- lapply(questionable_GSEs_filtered,sep_lnc)
+lnc_GSEs <- lnc_GSEs[lengths(lnc_GSEs) != 0]
+
+
+write_delim(as.data.frame(scRNA_GSEs), file = paste0(target_dir, "/", "scRNA_GSEids.txt"), delim = "\n", col_names = FALSE)
+write_delim(as.data.frame(lnc_GSEs), file = paste0(target_dir, "/", "lnc_GSEs.txt"), delim = "\n", col_names = FALSE)
+
 
 
