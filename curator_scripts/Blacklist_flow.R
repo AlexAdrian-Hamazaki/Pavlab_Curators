@@ -52,30 +52,24 @@ raw_list <- raw_list %>%
   plat_form <- ".*(platform|plat|form|unusable|unsupported).*"
   to_be_deleted <- ".*(delet(ed)*|mark(ed)?).*"
   pipe_line_problem <- ".*(stop|rna-?seq|(pipe(line)?)|corrupted|line).*"
-  quality <- "(data)? ?quality|unusable|poor"
+  unusable <- "(data)? ?quality|unusable|poor"
   zscore <- ".*((z( )?score)|z-?score|score).*"
   single_cell <- ".*((single(-)?|( )?cell)|sc).*"
-  duplicate <- ".*(duplicate|dup|in another).*"
   long_rna<- ".*(long|lnc(rna)?).*"
-  not_relevant <- "interest|relevant"
   unavilable <- ".*(unavailable|available|supplements).*"
-  small_size <- "sample|size|sample size"
   should_not_blackist <- ".*(replicate|one|n ?= ?1|condition).*"
   
   ## The actual output text for each category ##
   text_taxon <- "Unsupported Taxon"
   text_dye_swap <- "Unsupported Design; Dye-Swap"
-  text_platform <- "Platform issue. Unsupported Platform/unusable platform"
-  text_pipeline <- "Pipeline problem full stop as indicated on the master sheet"
-  text_quality <- "Poor data quality associated with this experiment or unable to find data associated with experiment or unusable data"
-  text_zscore <- "Zscore used as values, unsupported unit"
-  text_single_cell <- "Single cell Experiment"
-  text_duplicate <- "Duplicated experiment, samples already in other GSE"
-  text_long_rna <- "Long non-coding RNA Experiment"
+  text_platform <- "This experiment uses unsupported platform"
+  text_pipeline <- "The RNAseq data is unavailable/unusable"
+  text_unusable <- "Unable to retrieve data from GEO"
+  text_zscore <- "This experiment uses unsupported quantitation type"
+  text_single_cell <- "Unsupported sequencing technology: Single cell Experiment"
+  text_long_rna <- "Unsupported sequencing technology: Long non-coding RNA Experiment"
   text_unavilable <- "Insufficent available information in paper/GEO"
-  text_not_relevant <- "This experiment is not relevant to our interest"
   text_to_be_deleted <- "Flagged as to be deleted. More information needed"
-  text_small_size <- "Sample size too small. Usually experiments with total samples < 3"
   text_should_not_blacklist <- "This experiment probably shoudn't be on the balcklist. Double check what cateogry, or add a category"
   text_no_match <- "No match for this reason. Check Google Sheet for the correct word to use. Or if applicable, add a new category"
   
@@ -99,8 +93,8 @@ raw_list <- raw_list %>%
                    grepl(pipe_line_problem, tolower(x)),
                    text_pipeline,
                    ifelse(
-                     grepl(quality, tolower(x)),
-                     text_quality,
+                     grepl(unusable, tolower(x)),
+                     text_unusable,
                      ifelse(
                        grepl(zscore, tolower(x)),
                        text_zscore,
@@ -108,26 +102,15 @@ raw_list <- raw_list %>%
                          grepl(single_cell, tolower(x)),
                          text_single_cell,
                          ifelse(
-                           grepl(duplicate, tolower(x)),
-                           text_duplicate,
+                           grepl(long_rna, tolower(x)),
+                           text_long_rna,
                            ifelse(
-                             grepl(long_rna, tolower(x)),
-                             text_long_rna,
-                             ifelse(
-                               grepl(not_relevant, tolower(x)),
-                               text_not_relevant,
+                             grepl(unavilable, tolower(x)),
+                             text_unavilable,
                                ifelse(
-                                 grepl(unavilable, tolower(x)),
-                                 text_unavilable,
-                                 ifelse(
-                                   grepl(small_size, tolower(x)),
-                                   text_small_size,
-                                   ifelse(
-                                     grepl(should_not_blackist, tolower(x)),
-                                     text_should_not_blacklist,
-                                     text_no_match
-                                   )
-                                 )
+                                 grepl(should_not_blackist, tolower(x)),
+                                 text_should_not_blacklist,
+                                 text_no_match
                                )
                              )
                            )
@@ -136,10 +119,8 @@ raw_list <- raw_list %>%
                      )
                    )
                  )
-               )
              )
-           )
-    )
+           ))
   }
   
   
