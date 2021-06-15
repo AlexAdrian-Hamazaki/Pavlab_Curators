@@ -26,11 +26,12 @@ with open(importFile, 'r') as f:
         if line == '':
             pass
         else:
+            GSE = line.split()[0]
             count += 1
             if GSEs == '':
-                GSEs = GSEs + line.strip()
+                GSEs = GSEs + GSE
             else:
-                GSEs = GSEs + '%2c%20' + line.strip()
+                GSEs = GSEs + '%2c%20' + GSE
 
 
 if count > limit:
@@ -58,7 +59,7 @@ with open('eeIDList.txt', 'w') as f:
     for lst in experiments_dict[u'data']:
         shortName = str(lst[u'shortName'])
         eeid = str(lst[u'id'])
-        print(shortName + "      " + eeid)
+        print( eeid + "      " + shortName)
         f.write(eeid + "      " + shortName + "\n")
 
     
