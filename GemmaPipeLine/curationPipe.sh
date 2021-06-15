@@ -1,6 +1,8 @@
 #!bin/bash
-$GEMMACMD diffExAnalyze -u $GEMMAUSERNAME -p $GEMMAPASSWORD -f 'curatingList.txt';
-$GEMMACMD generateDataFile -u $GEMMAUSERNAME -p $GEMMAPASSWORD -f 'curatingList.txt';
-$GEMMACMD makeProcessedData -u $GEMMAUSERNAME -p $GEMMAPASSWORD -f 'curatingList.txt' -diagupdate;
+python batchChecking.py GSE12293 $GEMMAUSERNAME $GEMMAPASSWORD
+while IFS= read -r line || [ -n "$line" ]
+do
+$GEMMACMD diffExAnalyze -u $GEMMAUSERNAME -p $GEMMAPASSWORD -e $line;
+$GEMMACMD generateDataFile -u $GEMMAUSERNAME -p $GEMMAPASSWORD -e $line;
+done < curatingList.txt
 python eeID.py 'curatingList.txt' $GEMMAUSERNAME $GEMMAPASSWORD;
-
