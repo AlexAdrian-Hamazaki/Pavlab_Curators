@@ -5,14 +5,13 @@
 # Session Data files
 .RData
 
-<<<<<<< HEAD
 #virtual enviroment
 curator
 *.csv
 files
 #vscode settings
 *.json
-
+*.txt
 # User-specific files
 .Ruserdata
 # Example code in package build process

@@ -1,0 +1,1 @@
+python eeID.py 'curatingList.txt' $GEMMAUSERNAME $GEMMAPASSWORD;
