@@ -4,7 +4,7 @@
 *.json
 # Session Data files
 .RData
-
+*.txt
 # User-specific files
 .Ruserdata
 # Example code in package build process
