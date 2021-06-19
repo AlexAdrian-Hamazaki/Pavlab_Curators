@@ -1,7 +1,7 @@
 library(rentrez)
 library(stringr)
 
-
+gseid <- "GSE90809"
 entrez_db_searchable("gds")
 search_result <- entrez_search(db = "gds", term = paste0("GSE119248","[ACCN]"), retmax = 3)
 id <- "200097353"

@@ -27,7 +27,7 @@ running_dir <- dirname(getActiveDocumentContext()$path)
 #target_dir is the directory where your input_GSEids.txt file is, and where you will output your results. By default it is == running_dir
 target_dir <- running_dir
 #input_GSEids.txt is your text file with GSEIds you are testing. The file must be \n delimited
-input_GSEids.txt <- "input_GSEids.txt"
+input_GSEids.txt <- "negative_sc_hits.txt"
 
 #---Note: GSEs that are split (have .1, .2 ... after its GSEid), cannot be retrieved from GEO. This script takes off the split and uses the base GSE for API accession.
 #As a result, if it turns out that the base has scRNA/lnc, the outputted GSEid will NOT have the split name on it. You must manually check the outputs
@@ -74,9 +74,8 @@ input_GSEids.txt <- "input_GSEids.txt"
 
 #---Load input file
 gseids <- read.delim(paste0(target_dir, "/", input_GSEids.txt), header= FALSE)
-#typeof(gseids$V1)
-#***Using position in this case makes sure that if for some reason the name of the column is changed it will not break
-
+#---remove non distinct
+gseids_uniq <- unique(gseids)
 
 #---Clean input file
 # <- lapply(gseids, str_split, pattern = "\\.")
@@ -101,10 +100,18 @@ filter_scRNA <- function(GSEid) {
   
   gse_meta <- Meta(gse_data)
   
-  #---Get a GSM S4 object from gse_data and get its metadata
+  n_samples <- length(gse_meta$sample_id)
+
+  #---Get  GSM S4 objects from gse_data and get its metadata
   
   gsm_data <- GSMList(gse_data)[[1]]
   gsm_meta <- Meta(gsm_data)
+  
+  gsm_data_end <- GSMList(gse_data)[[n_samples]]
+  gsm_meta_end <- Meta(gsm_data_end)
+  
+  gsm_data_mid <-  GSMList(gse_data)[[n_samples/2]]
+  gsm_meta_mid <- Meta(gsm_data_mid)
   
   #---Delete the soft file that was just downloaded
   file.remove(paste0(target_dir,"/",GSEid,".soft.gz"))
@@ -112,15 +119,37 @@ filter_scRNA <- function(GSEid) {
   #---See if we can detect single cell/ single nuclus within the GSE page. If not, then we move on to exploring the GSM for it.
   #If at any point we detect a hit, we catch our error and add the given GSE to our output list
   tryCatch( {
-    stopifnot(!str_detect(str_to_lower(gse_meta$overall_design), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gse_meta$summary), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gse_meta$title), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$characteristics_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$data_processing), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$extraction_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$growth_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    stopifnot(!str_detect(str_to_lower(gsm_meta$treatment_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")))
-    warning("not sc, testing lnc...")
+    stopifnot(!str_detect(str_to_lower(gse_meta$overall_design), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gse_meta$summary), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gse_meta$title), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$title), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$description), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$extraction_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$growth_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$data_processing), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$source_name_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$characteristics_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta$treatment_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    
+    #Try for the other gsm_meta's because there might be different types of samples within 1 GEO page
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$title), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$description), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$extraction_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$growth_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$data_processing), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$source_name_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$characteristics_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_end$treatment_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$title), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$description), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$extraction_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$growth_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$data_processing), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$source_name_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$characteristics_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    stopifnot(!str_detect(str_to_lower(gsm_meta_mid$treatment_protocol_ch1), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*")))
+    warning(paste(GSEid,"not single cell, testing lnc..."))
   },
   error = function(cond) {
     message(paste0(GSEid," GSM is likely single cell"))
@@ -133,11 +162,14 @@ filter_scRNA <- function(GSEid) {
       stopifnot(!str_detect(str_to_lower(gse_meta$overall_design), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
       stopifnot(!str_detect(str_to_lower(gse_meta$summary), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
       stopifnot(!str_detect(str_to_lower(gse_meta$title), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      
       stopifnot(!str_detect(str_to_lower(gsm_meta$characteristics_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
       stopifnot(!str_detect(str_to_lower(gsm_meta$data_processing), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
       stopifnot(!str_detect(str_to_lower(gsm_meta$extraction_protocol_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
       stopifnot(!str_detect(str_to_lower(gsm_meta$growth_protocol_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
       stopifnot(!str_detect(str_to_lower(gsm_meta$treatment_protocol_ch1), pattern = (".*(lnc|linc).?rna.*|.*long.?non.*|.?long.?n.?c.*")))
+      message(paste(GSEid,"not single cell, or lnc"))
+      
     },
     error = function(cond) {
       message(paste0(GSEid," GSM is likely lnc"))
@@ -147,7 +179,9 @@ filter_scRNA <- function(GSEid) {
   }
   )
 }
-  
+#-------testing
+
+
 
 # str_view(string = "we used single-cell RNA-sequencing (scRNA-seq) to analyze the transc", pattern = ".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito).*")
 
