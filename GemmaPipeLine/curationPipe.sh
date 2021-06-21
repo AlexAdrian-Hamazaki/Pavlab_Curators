@@ -5,9 +5,17 @@ while IFS= read -r line || [ -n “$line” ]
 do
 	gse=$(awk ‘{print $1}’ <<< “$line”)
 	python batchChecking.py $gse $GEMMAUSERNAME $GEMMAPASSWORD
-	for state in $(grep . “temp.txt”)
+	for variable in $(grep . "temp.txt")
+	state=$(awk '{print $1}' <<< "$variable")
+	platform=$(awk '{print $1}' <<< "$variable")
 	do
-		if [[ “$state” == “True” ]]
+		if [[ "$platform" == "affy" ]]
+			then 
+			$GEMMACMD affyfromcel -u $GEMMAUSERNAME -p $GEMMAUSERNAME -e $gse;
+			else 
+			echo not affy platform
+		fi
+		if [[ "$state" == "True" ]]
 			then
 				$GEMMACMD makeProcessedData -u $GEMMAUSERNAME -p $GEMMAPASSWORD -e $gse;
 			else
