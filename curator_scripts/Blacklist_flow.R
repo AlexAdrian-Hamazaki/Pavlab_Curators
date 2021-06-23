@@ -47,6 +47,9 @@ extract_gse <- function(gses) {
 raw_list <- raw_list %>%
   mutate(Name=extract_gse(raw_list$Accession))
 
+### Clean duplicates
+raw_list <- raw_list[!duplicated(raw_list[,1]),]
+
  ## more conditions can be added here using regex match pattern ##
   taxon<- ".*(species|taxons?|animal).*"
   dye_swap <- ".*(dye|swap|dye swap|dye-swap|two colou?r|two-colou?r).*"
@@ -61,15 +64,15 @@ raw_list <- raw_list %>%
   should_not_blackist <- ".*(replicate|one|n ?= ?1|condition).*"
   
   ## The actual output text for each category ##
-  text_taxon <- "Unsupported Taxon"
-  text_dye_swap <- "Unsupported Design: Dye-Swap"
+  text_taxon <- "Unsupported taxon"
+  text_dye_swap <- "Unsupported design: Dye-swap"
   text_platform <- "Unsupported platform"
   text_pipeline <- "Raw RNA-seq read data unavailable/unusable"
-  text_unusable <- "Unable to retrieve data from GEO"
+  #text_unusable <- "Unable to retrieve data from GEO"
   text_zscore <- "Unsupported quantitation type"
-  text_single_cell <- "Unsupported experiment type: Single cell Experiment"
-  text_long_rna <- "Unsupported experiment type: Long non-coding RNA Experiment"
-  text_unavilable <- "Insufficent available information in paper/GEO"
+  text_single_cell <- "Unsupported experiment type: Single cell"
+  text_long_rna <- "Unsupported experiment type: Long non-coding RNA"
+  #text_unavilable <- "Insufficent available information in paper/GEO"
   text_to_be_deleted <- "Flagged as to be deleted. More information needed"
   text_should_not_blacklist <- "This experiment probably shoudn't be on the balcklist. Double check what cateogry, or add a category"
   text_no_match <- "No match for this reason. Check Google Sheet for the correct word to use. Or if applicable, add a new category"
@@ -173,15 +176,12 @@ good_list <- processed_list %>%
 # }
 
 
-
-
+good_list <- good_list %>% select(1,4,3)
 
 library(readr)
-###---AAA I belive you could use https://googlesheets4.tidyverse.org/ also to write str8 to the sheet. Not necessary, but could be cool/nice 
 write_csv(full_list, 'full_list.csv')
 write_csv(double_check_list, 'double_check_list.csv')
 write_csv(good_list, 'blacklist_list.csv')
-###---AAA could name good_list to something more explicetly indicating that they should be blacklisted
 
 
 
