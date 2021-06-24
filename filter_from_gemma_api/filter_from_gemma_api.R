@@ -5,16 +5,11 @@ password <- commandArgs(TRUE)[3]
 message(paste("Username Input:", username))
 message(paste("Password Input:", password))
 
-# print(interactive())
 # 
-# #---Asking user to double check their user information
-# cat( "Please double check  your Gemma user and password, if they are correct type in \"yes\", if not, type \"no\". Please advise that this script is unable to determine if you successfully log into gemma or not. If your user and pass are incorrect, the gemma API will only return info on experiments that are public.")
-# correct_gemma <- readline(con=stdin(),1)
-# print(correct_gemma)
-# if (correct_gemma != "yes") {
-#   cat("You\'ve claimed your gemma user is incorrect, or you inputted an invalid answer, try again")
-# }
-# 
+# input_GSEids <- "testers.txt"
+# username <-  "alexadrianhamazaki"
+# password <- "Doglukepotato3!"
+
 
 #---For now, the running directory and target directory are hard wired to this folder system. This is where they sohuld be if you've cloned from github
 running_dir <- "~/Projects/Pavlab_Curators/filter_from_gemma_api"
@@ -39,6 +34,7 @@ source("main/functions.R")
 #---Retrieve Gemma API information for all of the GSEs
 source("main/01_get_gemma_API.R")
 stopifnot(file.exists(paste0(results_dir,"/API_output")))
+
 
 #---Filter Gemma API for RNAseq, Microarray (one and two color) experiments. and "other" experiments
 
