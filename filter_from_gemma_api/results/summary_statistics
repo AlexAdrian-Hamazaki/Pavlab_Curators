@@ -1,0 +1,25 @@
+data_frames	row_counts
+rnaseq_GSEs	257
+micr_GSEs	194
+unknown_GSEs	0
+two_colour_GSEs	15
+one_colour_GSEs	179
+affymetrix_GSEs	94
+ion torrent_GSEs	0
+nano_string_GSEs	0
+lnc_rna_GSEs	0
+ab_GSEs	0
+pacbio_GSEs	0
+total_GSE_input	452
+GSEs_in_gemma	451
+GSEs_not_in_gemma	1
+human_GSEs	159
+mouse_GSEs	258
+rat_GSES	33
+other_GSEs	1
+public_GSEs	450
+private_GSEs	1
+no_diff_GSEs	93
+diff_GSEs	358
+completed_GSEs	449
+non_completed_GSEs	2

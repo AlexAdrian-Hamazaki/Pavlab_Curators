@@ -1,109 +1,66 @@
 Loading jars from /space/grp/lib/Gemma
-[Gemma 2021-06-14 12:39:36,227] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:39,914] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,217] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,258] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,284] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,318] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,330] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,342] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:40,355] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-14 12:39:42,776] INFO [main] ubic.gemma.core.ontology.OntologyServiceImpl.afterPropertiesSet(179) | Auto-loading of ontologies suppressed
-[Gemma 2021-06-14 12:39:43,514] INFO [main] ubic.gemma.persistence.util.SpringContextUtil.getApplicationContext(64) | Got context in 8809ms
-[Gemma 2021-06-14 12:39:43,648] INFO [main] ubic.gemma.core.util.AbstractSpringAwareCLI.authenticate(258) | Logged in as Wilson
-[Gemma 2021-06-14 12:39:43,675] INFO [main] ubic.gemma.core.apps.LoadExpressionDataCli.doWork(137) | Got accession(s) from command line GSE5459
-[Gemma 2021-06-14 12:39:43,730] INFO [main] ubic.gemma.core.loader.expression.geo.GeoDomainObjectGenerator.generate(71) | Generating objects for GSE5459 using GeoDomainObjectGenerator
-[Gemma 2021-06-14 12:39:43,731] INFO [main] ubic.gemma.core.util.NetDatasourceUtil.connect(46) | Connecting to ftp.ncbi.nih.gov with anonymous : gemma@ubic.ca
-[Gemma 2021-06-14 12:39:44,481] INFO [pool-25-thread-1] ubic.gemma.core.loader.util.fetcher.FtpFetcher$1.call(91) | Fetching geo/series//GSE5nnn/GSE5459/soft/GSE5459_family.soft.gz to /cosmos/scratch/curator-scratch/arraydata/GEO/GSE5459/GSE5459.soft.gz
-[Gemma 2021-06-14 12:39:44,730] INFO [pool-25-thread-1] ubic.basecode.util.NetUtils.ftpDownloadFile(107) | Output file /cosmos/scratch/curator-scratch/arraydata/GEO/GSE5459/GSE5459.soft.gz already exists with correct size. Will not re-download
-[Gemma 2021-06-14 12:39:54,481] INFO [main] ubic.gemma.core.loader.util.fetcher.FtpFetcher.doTask(118) | Done: local file is /cosmos/scratch/curator-scratch/arraydata/GEO/GSE5459/GSE5459.soft.gz
-[Gemma 2021-06-14 12:39:54,561] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSeriesLine(1590) |  ** SuperSeries detected **
-[Gemma 2021-06-14 12:39:54,569] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSeriesLine(1580) |  ** SuperSeries detected **
-[Gemma 2021-06-14 12:39:54,569] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSeriesLine(1580) |  ** SuperSeries detected **
-[Gemma 2021-06-14 12:39:54,575] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseLine(974) | Starting platform GPL2987
-[Gemma 2021-06-14 12:39:59,492] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(150) | 254714 lines parsed.
-[Gemma 2021-06-14 12:39:59,493] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(172) | Done parsing.
-[Gemma 2021-06-14 12:40:01,031] INFO [main] ubic.gemma.core.loader.expression.geo.GeoDomainObjectGenerator.processDataSet(169) | Processing GDS2227
-[Gemma 2021-06-14 12:40:01,033] INFO [main] ubic.gemma.core.util.NetDatasourceUtil.connect(46) | Connecting to ftp.ncbi.nih.gov with anonymous : gemma@ubic.ca
-[Gemma 2021-06-14 12:40:01,751] INFO [pool-27-thread-1] ubic.gemma.core.loader.util.fetcher.FtpFetcher$1.call(91) | Fetching geo/datasets//GDS2nnn/GDS2227/soft/GDS2227.soft.gz to /cosmos/scratch/curator-scratch/arraydata/GEO/GDS2227/GDS2227.soft.gz
-[Gemma 2021-06-14 12:40:01,999] INFO [pool-27-thread-1] ubic.basecode.util.NetUtils.ftpDownloadFile(107) | Output file /cosmos/scratch/curator-scratch/arraydata/GEO/GDS2227/GDS2227.soft.gz already exists with correct size. Will not re-download
-[Gemma 2021-06-14 12:40:11,751] INFO [main] ubic.gemma.core.loader.util.fetcher.FtpFetcher.doTask(118) | Done: local file is /cosmos/scratch/curator-scratch/arraydata/GEO/GDS2227/GDS2227.soft.gz
-[Gemma 2021-06-14 12:40:16,754] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(150) | 11615 lines parsed.
-[Gemma 2021-06-14 12:40:16,755] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(172) | Done parsing.
-[Gemma 2021-06-14 12:40:16,758] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.fetchAndLoad(203) |  ========= SuperSeries Detected! =========
-[Gemma 2021-06-14 12:40:16,759] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.fetchAndLoad(205) | Please make sure you want to import this as a superseries and not the individual subseries
-[Gemma 2021-06-14 12:40:16,780] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatform(1197) | Converting platform: GPL2987
-[Gemma 2021-06-14 12:40:16,839] WARN [main] ubic.gemma.core.loader.expression.geo.model.GeoPlatform.getColumnData(259) | No platform information for column=CLONE_ID
-[Gemma 2021-06-14 12:40:16,922] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatformElements(1373) | 11520 elements on the platform
-[Gemma 2021-06-14 12:40:16,979] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.matchToExistingPlatform(667) | Platform GPL2987 exists in Gemma, checking for correct probe names and re-matching if necessary ...
-[Gemma 2021-06-14 12:40:16,980] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.matchToExistingPlatform(678) | Loading probes ...
-[Gemma 2021-06-14 12:40:18,034] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.getGemmaIDColumnNameInGEO(497) | Exact Gemma probe names were found in GEO column=ID
-[Gemma 2021-06-14 12:40:18,159] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.checkSamplesAreNew(362) | Series now contains 21 (removed 0)
-[Gemma 2021-06-14 12:40:18,160] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(1880) | Converting series: GSE5459
-[Gemma 2021-06-14 12:40:18,160] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.checkForDataToSkip(573) | Data from GDS2227 is of type geneExpressionArraybased, 21 samples.
-[Gemma 2021-06-14 12:40:18,161] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(1899) | Series has 21 samples in total
-[Gemma 2021-06-14 12:40:18,164] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,164] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatform(1197) | Converting platform: GPL2987
-[Gemma 2021-06-14 12:40:18,172] WARN [main] ubic.gemma.core.loader.expression.geo.model.GeoPlatform.getColumnData(259) | No platform information for column=CLONE_ID
-[Gemma 2021-06-14 12:40:18,212] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatformElements(1373) | 11520 elements on the platform
-[Gemma 2021-06-14 12:40:18,213] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,213] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,214] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,214] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,215] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,215] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,215] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,216] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,216] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,216] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,217] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,217] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,217] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,218] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,218] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,219] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,221] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,221] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,221] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,222] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSample(1770) | Multi-sample information stored in biomaterial BioMaterial
-[Gemma 2021-06-14 12:40:18,222] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(2048) | Expression Experiment from GSE5459 has 21 bioassays and 21 biomaterials.
-[Gemma 2021-06-14 12:40:18,222] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertDataset(992) | Converting dataset:GDS2227
-[Gemma 2021-06-14 12:40:18,223] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertDataSetDataVectors(1024) | 21 samples in GDS2227
-[Gemma 2021-06-14 12:40:18,223] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertVectorsForPlatform(2396) | Converting vectors for GPL2987, 21 samples.
-[Gemma 2021-06-14 12:40:18,298] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertVectorsForPlatform(2437) | 11520 data vectors for VALUE
-[Gemma 2021-06-14 12:40:18,304] INFO [main] ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser.<clinit>(80) | No custom quantitation type descriptors found
-[Gemma 2021-06-14 12:40:18,517] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertVectorsForPlatform(2437) | 11520 data vectors for AVERAGE
-[Gemma 2021-06-14 12:40:18,676] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertVectorsForPlatform(2496) | Total of 23040 vectors on platform GPL2987, 2 quantitation types.
-[Gemma 2021-06-14 12:40:22,908] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persist(95) | >>>>>>>>>> Persisting ExpressionExperiment Name=Selection of Neural Differentiation-Specific Genes by Comparing Profiles of Random Differentiation (GSE5459)
-[Gemma 2021-06-14 12:40:23,162] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.checkExperimentalDesign(192) | Checking experimental design for valid setup
-[Gemma 2021-06-14 12:40:23,163] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.checkExperimentalDesign(201) | Checking: ExperimentalFactor Id=36248 Name=growthProtocol, 2 factor values to check...
-[Gemma 2021-06-14 12:40:23,164] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.checkExperimentalDesign(201) | Checking: ExperimentalFactor Id=36249 Name=developmentStage, 7 factor values to check...
-[Gemma 2021-06-14 12:40:23,164] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.processBioAssays(545) | Filling in bioassays via data vectors
-[Gemma 2021-06-14 12:40:23,164] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.fillInExpressionExperimentDataVectorAssociations(335) | Filling in DesignElementDataVectors...
-[Gemma 2021-06-14 12:40:28,550] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persistBioAssayDimension(442) | Persisted: 10 bioassays
-[Gemma 2021-06-14 12:40:33,199] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persistBioAssayDimension(442) | Persisted: 20 bioassays
-[Gemma 2021-06-14 12:40:33,649] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.fillInExpressionExperimentDataVectorAssociations(346) | Setup: 10484
-[Gemma 2021-06-14 12:40:33,949] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.fillInExpressionExperimentDataVectorAssociations(366) | Filled in total of 23040 DesignElementDataVectors, 21 bioassays
-[Gemma 2021-06-14 12:40:38,987] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persist(132) | <<<<<< FINISHED Persisting ExpressionExperiment Id=18983 Name=Selection of Neural Differentiation-Specific Genes by Comparing Profiles of Random Differentiation (GSE5459)
-[Gemma 2021-06-14 12:40:41,131] INFO [main] ubic.gemma.persistence.service.expression.experiment.ExpressionExperimentDaoImpl.loadDetailsValueObjects(1088) | EE details query: 9 ms for 1 results
-[Gemma 2021-06-14 12:40:41,156] INFO [main] ubic.gemma.persistence.service.expression.experiment.ExpressionExperimentDaoImpl.loadDetailsValueObjects(1107) | EE details VO query + postprocessing: 34 ms
-[Gemma 2021-06-14 12:40:41,182] WARN [main] org.hibernate.hql.ast.QueryTranslatorImpl.list(353) | firstResult/maxResults specified with collection fetch; applying in memory!
-[Gemma 2021-06-14 12:40:54,710] INFO [main] ubic.gemma.core.analysis.report.ArrayDesignReportServiceImpl.generateArrayDesignReport(178) | Generated report for ArrayDesign Id=1217 Name=Macrogen MAC Mouse 11K Oligo Microarray (GPL2987)
-[Gemma 2021-06-14 12:40:54,723] INFO [main] ubic.gemma.core.apps.LoadExpressionDataCli.postProcess(279) | Postprocessing ...
-[Gemma 2021-06-14 12:41:09,034] INFO [main] ubic.gemma.core.analysis.preprocess.PreprocessorServiceImpl.processForMissingValues(313) | ExpressionExperiment Id=18983 Name=Selection of Neural Differentiation-Specific Genes by Comparing Profiles of Random Differentiation (GSE5459) uses a two-color array design, processing for missing values ...
-[Gemma 2021-06-14 12:41:09,067] INFO [main] ubic.gemma.core.analysis.preprocess.ExpressionDataMatrixBuilder.getUsefulQuantitationTypes(186) | Preferred=QuantitationTypeImpl Id=549195 Name=VALUE
-[Gemma 2021-06-14 12:41:09,067] INFO [main] ubic.gemma.core.analysis.preprocess.TwoChannelMissingValuesImpl.computeMissingValues(108) | Loading vectors ...
-[Gemma 2021-06-14 12:41:10,112] INFO [main] ubic.gemma.persistence.service.expression.bioAssayData.DesignElementDataVectorDaoImpl.thawRawAndProcessed(173) | Thaw phase 4 11520 vector-associated probes thawed in 178ms
-[Gemma 2021-06-14 12:41:10,193] INFO [main] ubic.gemma.core.analysis.preprocess.TwoChannelMissingValuesImpl.logTimeInfo(512) | Loaded in 1.12s. Thawing 11520 vectors
-[Gemma 2021-06-14 12:41:10,206] INFO [main] ubic.gemma.core.analysis.preprocess.TwoChannelMissingValuesImpl.computeMissingValues(133) | Study has 1 bioassaydimensions
-[Gemma 2021-06-14 12:41:10,441] INFO [main] ubic.gemma.core.analysis.preprocess.ExpressionDataMatrixBuilder.getQuantitationTypesNeeded(664) | Preferred=QuantitationTypeImpl Id=549195 Name=VALUE
-[Gemma 2021-06-14 12:41:10,445] WARN [main] ubic.gemma.core.analysis.preprocess.ExpressionDataMatrixBuilder.checkChannelA(554) | Could not find signals for both channels: Channel A =null, Channel B=null and backgroundChannelA =null and background-subtracted channel A =null
-[Gemma 2021-06-14 12:41:10,446] WARN [main] ubic.gemma.core.analysis.preprocess.TwoChannelMissingValuesImpl.validate(526) | Must have at least preferred and one intensity data matrix, missing value computation should not proceed
-[Gemma 2021-06-14 12:41:10,446] WARN [main] ubic.gemma.core.analysis.preprocess.TwoChannelMissingValuesImpl.computeMissingValues(215) | Missing value computation cannot proceed
-[Gemma 2021-06-14 12:41:10,475] INFO [main] ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.createProcessedDataVectors(103) | Computing processed expression vectors for ExpressionExperiment Id=18983 Name=Selection of Neural Differentiation-Specific Genes by Comparing Profiles of Random Differentiation (GSE5459)
-[Gemma 2021-06-14 12:41:11,253] INFO [main] ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.ensureLog2Scale(499) | Converting from LOGBASEUNKNOWN to log2
-[Gemma 2021-06-14 12:41:11,422] ERROR [main] ubic.gemma.core.util.AbstractCLI.addErrorObject(406) | GSE5459: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, data on an unknown log scale is not supported. Please check the quantitation types, and make sure the data is expressed in terms of log2 or un-logged data  (QuantitationTypeImpl Id=549196 Name=VALUE - Processed version)
-java.lang.IllegalStateException: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, data on an unknown log scale is not supported. Please check the quantitation types, and make sure the data is expressed in terms of log2 or un-logged data  (QuantitationTypeImpl Id=549196 Name=VALUE - Processed version)
+[Gemma 2021-06-23 16:38:21,886] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:25,679] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:25,992] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,033] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,075] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,120] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,136] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,152] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,189] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:28,532] INFO [main] ubic.gemma.core.ontology.OntologyServiceImpl.afterPropertiesSet(179) | Auto-loading of ontologies suppressed
+[Gemma 2021-06-23 16:38:29,344] INFO [main] ubic.gemma.persistence.util.SpringContextUtil.getApplicationContext(64) | Got context in 9059ms
+[Gemma 2021-06-23 16:38:29,487] INFO [main] ubic.gemma.core.util.AbstractSpringAwareCLI.authenticate(258) | Logged in as Wilson
+[Gemma 2021-06-23 16:38:29,501] INFO [main] ubic.gemma.core.apps.LoadExpressionDataCli.doWork(137) | Got accession(s) from command line GSE53761
+[Gemma 2021-06-23 16:38:29,546] INFO [main] ubic.gemma.core.loader.expression.geo.GeoDomainObjectGenerator.generate(71) | Generating objects for GSE53761 using GeoDomainObjectGenerator
+[Gemma 2021-06-23 16:38:29,549] INFO [main] ubic.gemma.core.util.NetDatasourceUtil.connect(46) | Connecting to ftp.ncbi.nih.gov with anonymous : gemma@ubic.ca
+[Gemma 2021-06-23 16:38:31,496] INFO [pool-25-thread-1] ubic.gemma.core.loader.util.fetcher.FtpFetcher$1.call(91) | Fetching geo/series//GSE53nnn/GSE53761/soft/GSE53761_family.soft.gz to /cosmos/scratch/curator-scratch/arraydata/GEO/GSE53761/GSE53761.soft.gz
+[Gemma 2021-06-23 16:38:41,496] INFO [main] ubic.gemma.core.loader.util.fetcher.FtpFetcher.doTask(118) | Done: local file is /cosmos/scratch/curator-scratch/arraydata/GEO/GSE53761/GSE53761.soft.gz
+[Gemma 2021-06-23 16:38:41,598] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseLine(974) | Starting platform GPL17543
+[Gemma 2021-06-23 16:38:42,534] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300223
+[Gemma 2021-06-23 16:38:42,536] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.model.GeoValues.addSample(340) | Sample lacks data, no data will be imported for this data set
+[Gemma 2021-06-23 16:38:42,537] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,539] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300224
+[Gemma 2021-06-23 16:38:42,539] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,541] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300225
+[Gemma 2021-06-23 16:38:42,541] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,544] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300226
+[Gemma 2021-06-23 16:38:42,544] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,547] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300227
+[Gemma 2021-06-23 16:38:42,547] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,549] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300228
+[Gemma 2021-06-23 16:38:42,549] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:46,510] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(150) | 46549 lines parsed.
+[Gemma 2021-06-23 16:38:46,511] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(172) | Done parsing.
+[Gemma 2021-06-23 16:38:47,975] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.checkSamplesAreNew(362) | Series now contains 6 (removed 0)
+[Gemma 2021-06-23 16:38:47,979] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(1880) | Converting series: GSE53761
+[Gemma 2021-06-23 16:38:47,979] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(1899) | Series has 6 samples in total
+[Gemma 2021-06-23 16:38:47,997] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: autism, ignoring
+[Gemma 2021-06-23 16:38:47,999] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: c57bl/6, ignoring
+[Gemma 2021-06-23 16:38:48,002] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: fvb, ignoring
+[Gemma 2021-06-23 16:38:48,006] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: mock infected, ignoring
+[Gemma 2021-06-23 16:38:48,007] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: putamen, ignoring
+[Gemma 2021-06-23 16:38:48,012] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatform(1197) | Converting platform: GPL17543
+[Gemma 2021-06-23 16:38:48,013] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.determinePlatformExternalDatabase(2616) | External database is ExternalDatabase Name=Mus musculus ORFs
+[Gemma 2021-06-23 16:38:48,035] WARN [main] ubic.gemma.core.loader.expression.geo.model.GeoPlatform.getColumnData(259) | No platform information for column=CLONE_ID
+[Gemma 2021-06-23 16:38:48,035] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatformElements(1307) | Will not convert elements for this platform - set forceConvertElements to override
+[Gemma 2021-06-23 16:38:48,036] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatform(1266) | Some or all identifiers may have been skipped during parse
+[Gemma 2021-06-23 16:38:48,037] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(2048) | Expression Experiment from GSE53761 has 6 bioassays and 6 biomaterials.
+[Gemma 2021-06-23 16:38:48,038] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertVectorsForPlatform(2390) | Platform characteristics indicate data from GEO should be ignored or will not be present anyway (GPL17543)
+[Gemma 2021-06-23 16:38:48,038] WARN [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.check(274) | Experiment has no data vectors (this might be expected): ExpressionExperiment Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:38:53,013] INFO [main] ubic.gemma.persistence.persister.ArrayDesignPersister.findOrPersistArrayDesign(104) | Platform ArrayDesign Name=Illumina MouseWG-6 v2.0 R2 expression beadchip (GPL17543) already exists, returning...
+[Gemma 2021-06-23 16:38:55,105] INFO [main] ubic.gemma.persistence.service.expression.arrayDesign.ArrayDesignDaoImpl.getBioSequences(148) | Fetch sequences: 2056ms
+[Gemma 2021-06-23 16:38:55,225] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persist(95) | >>>>>>>>>> Persisting ExpressionExperiment Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:38:55,281] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.processBioAssays(539) | Filling in bioassays
+[Gemma 2021-06-23 16:38:58,181] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persist(132) | <<<<<< FINISHED Persisting ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:38:58,275] INFO [main] ubic.gemma.persistence.service.expression.experiment.ExpressionExperimentDaoImpl.loadDetailsValueObjects(1088) | EE details query: 7 ms for 1 results
+[Gemma 2021-06-23 16:38:58,298] INFO [main] ubic.gemma.persistence.service.expression.experiment.ExpressionExperimentDaoImpl.loadDetailsValueObjects(1107) | EE details VO query + postprocessing: 30 ms
+[Gemma 2021-06-23 16:38:58,315] WARN [main] org.hibernate.hql.ast.QueryTranslatorImpl.list(355) | firstResult/maxResults specified with collection fetch; applying in memory!
+[Gemma 2021-06-23 16:39:00,115] INFO [main] ubic.gemma.core.analysis.report.ArrayDesignReportServiceImpl.generateArrayDesignReport(178) | Generated report for ArrayDesign Id=891 Name=Illumina MouseWG-6 v2.0 R2 expression beadchip (GPL17543)
+[Gemma 2021-06-23 16:39:00,127] INFO [main] ubic.gemma.core.apps.LoadExpressionDataCli.postProcess(279) | Postprocessing ...
+[Gemma 2021-06-23 16:39:00,214] INFO [main] ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.createProcessedDataVectors(103) | Computing processed expression vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:39:00,268] ERROR [main] ubic.gemma.core.util.AbstractCLI.addErrorObject(406) | GSE53761: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+java.lang.IllegalStateException: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
 	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:75)
 	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:255)
 	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:148)
@@ -112,13 +69,13 @@ java.lang.IllegalStateException: ubic.gemma.core.analysis.preprocess.Preprocessi
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
-	at com.sun.proxy.$Proxy170.process(Unknown Source)
+	at com.sun.proxy.$Proxy171.process(Unknown Source)
 	at ubic.gemma.core.apps.LoadExpressionDataCli.postProcess(LoadExpressionDataCli.java:283)
 	at ubic.gemma.core.apps.LoadExpressionDataCli.processAccession(LoadExpressionDataCli.java:239)
 	at ubic.gemma.core.apps.LoadExpressionDataCli.doWork(LoadExpressionDataCli.java:160)
 	at ubic.gemma.core.util.AbstractCLI.executeCommand(AbstractCLI.java:126)
 	at ubic.gemma.core.apps.GemmaCLI.main(GemmaCLI.java:115)
-Caused by: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, data on an unknown log scale is not supported. Please check the quantitation types, and make sure the data is expressed in terms of log2 or un-logged data  (QuantitationTypeImpl Id=549196 Name=VALUE - Processed version)
+Caused by: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
 	at ubic.gemma.core.analysis.preprocess.PreprocessorServiceImpl.process(PreprocessorServiceImpl.java:125)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -129,7 +86,7 @@ Caused by: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
 	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:69)
 	... 13 more
-Caused by: java.lang.RuntimeException: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, data on an unknown log scale is not supported. Please check the quantitation types, and make sure the data is expressed in terms of log2 or un-logged data  (QuantitationTypeImpl Id=549196 Name=VALUE - Processed version)
+Caused by: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
 	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorServiceImpl.computeProcessedExpressionData(ProcessedExpressionDataVectorServiceImpl.java:304)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -148,14 +105,11 @@ Caused by: java.lang.RuntimeException: ubic.gemma.core.analysis.preprocess.Unkno
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
-	at ubic.gemma.persistence.service.expression.bioAssayData.$Proxy125.computeProcessedExpressionData(Unknown Source)
+	at ubic.gemma.persistence.service.expression.bioAssayData.$Proxy133.computeProcessedExpressionData(Unknown Source)
 	at ubic.gemma.core.analysis.preprocess.PreprocessorServiceImpl.process(PreprocessorServiceImpl.java:120)
 	... 21 more
-Caused by: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, data on an unknown log scale is not supported. Please check the quantitation types, and make sure the data is expressed in terms of log2 or un-logged data  (QuantitationTypeImpl Id=549196 Name=VALUE - Processed version)
-	at ubic.gemma.core.datastructure.matrix.ExpressionDataDoubleMatrixUtil.findScale(ExpressionDataDoubleMatrixUtil.java:148)
-	at ubic.gemma.core.datastructure.matrix.ExpressionDataDoubleMatrixUtil.ensureLog2Scale(ExpressionDataDoubleMatrixUtil.java:100)
-	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.ensureLog2Scale(ProcessedExpressionDataVectorDaoImpl.java:501)
-	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.createProcessedDataVectors(ProcessedExpressionDataVectorDaoImpl.java:125)
+Caused by: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.createProcessedDataVectors(ProcessedExpressionDataVectorDaoImpl.java:115)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -175,7 +129,7 @@ Caused by: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, 
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
-	at com.sun.proxy.$Proxy124.createProcessedDataVectors(Unknown Source)
+	at com.sun.proxy.$Proxy132.createProcessedDataVectors(Unknown Source)
 	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorServiceImpl.createProcessedDataVectors(ProcessedExpressionDataVectorServiceImpl.java:88)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -200,7 +154,7 @@ Caused by: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, 
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
-	at ubic.gemma.persistence.service.expression.bioAssayData.$Proxy125.createProcessedDataVectors(Unknown Source)
+	at ubic.gemma.persistence.service.expression.bioAssayData.$Proxy133.createProcessedDataVectors(Unknown Source)
 	at ubic.gemma.core.analysis.preprocess.ProcessedExpressionDataVectorCreateHelperServiceImpl.createProcessedExpressionData(ProcessedExpressionDataVectorCreateHelperServiceImpl.java:123)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -223,13 +177,13 @@ Caused by: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, 
 	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
-	at com.sun.proxy.$Proxy132.createProcessedExpressionData(Unknown Source)
+	at com.sun.proxy.$Proxy140.createProcessedExpressionData(Unknown Source)
 	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorServiceImpl.computeProcessedExpressionData(ProcessedExpressionDataVectorServiceImpl.java:294)
 	... 40 more
-[Gemma 2021-06-14 12:41:11,426] ERROR [main] ubic.gemma.core.util.AbstractCLI.summarizeProcessing(448) | 
+[Gemma 2021-06-23 16:39:00,274] ERROR [main] ubic.gemma.core.util.AbstractCLI.summarizeProcessing(448) | 
 ---------------------
 Errors occurred during the processing of 1 objects:
-Error	GSE5459: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: ubic.gemma.core.analysis.preprocess.UnknownLogScaleException: Sorry, data on an unknown log scale is not supported. Please check the quantitation types, and make sure the data is expressed in terms of log2 or un-logged data  (QuantitationTypeImpl Id=549196 Name=VALUE - Processed version)
+Error	GSE53761: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
 ---------------------
 
-[Gemma 2021-06-14 12:41:11,426] INFO [main] ubic.gemma.core.util.AbstractCLI.executeCommand(135) | Elapsed time: 96 seconds.
+[Gemma 2021-06-23 16:39:00,274] INFO [main] ubic.gemma.core.util.AbstractCLI.executeCommand(135) | Elapsed time: 39 seconds.

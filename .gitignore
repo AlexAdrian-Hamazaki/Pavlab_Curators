@@ -4,6 +4,13 @@
 *.json
 # Session Data files
 .RData
+
+#virtual enviroment
+curator
+*.csv
+files
+#vscode settings
+*.json
 *.txt
 # User-specific files
 .Ruserdata
@@ -29,3 +36,4 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 Pavlab_Curators.Rproj
+/superfiltering/super
