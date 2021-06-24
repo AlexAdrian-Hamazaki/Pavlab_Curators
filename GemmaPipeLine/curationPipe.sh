@@ -24,4 +24,4 @@ do
 	$GEMMACMD diffExAnalyze -u $GEMMAUSERNAME -p $GEMMAPASSWORD -e $line;
 	$GEMMACMD generateDataFile -u $GEMMAUSERNAME -p $GEMMAPASSWORD -e $gse;
 done < curatingList.txt
-python eeID.py ‘curatingList.txt’ $GEMMAUSERNAME $GEMMAPASSWORD;
+python eeID.py 'curatingList.txt' $GEMMAUSERNAME $GEMMAPASSWORD;
