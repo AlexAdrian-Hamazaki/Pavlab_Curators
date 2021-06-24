@@ -24,22 +24,8 @@ def main():
     GSE = str(sys.argv[1])
 
     print ('Start scrapping using the Gemma REST_api')
-    api_url= 'https://gemma.msl.ubc.ca/rest/v2/datasets/{}?offset=0&limit=20'.format(GSE)
     plat= "https://gemma.msl.ubc.ca/rest/v2/datasets/{}/platforms".format(GSE)
     # Add basic authentication header
-    request = urllib2.Request(api_url)
-    request.add_header("Authorization", "Basic {}".format(base64string)) 
-    response = urllib2.urlopen(request)
-    text = response.read()
-    experiments_dict = json.loads(text)
-    state = "False"
-    if len(experiments_dict[u'data']) == 0:
-        state = "False"
-    elif experiments_dict[u'data'][0][u'batchConfound'] is not None or (experiments_dict[u'data'][0][u'batchEffect'] is not None and experiments_dict[u'data'][0][u'batchEffect'] !="No batch information was available" and 
-    experiments_dict[u'data'][0][u'batchEffect'] != "No batch effect was detected"):
-	    print("{} has batch info, correcting now".format(GSE))
-	    state = "True"
-
     request = urllib2.Request(plat)
     request.add_header("Authorization", "Basic {}".format(base64string)) 
     response = urllib2.urlopen(request)
