@@ -72,7 +72,7 @@ summary_statistics: Various summary statistics that are generated about how the 
 ----------------------Running the script
 The CLI for this script follows this syntax
 
-./filter_from_gemma_api.R <name_of_input_file> $GEMMAUSERNAME $GEMMAPASSWORD\
+./filter_from_gemma_api.R <name_of_input_file> $GEMMAUSERNAME $GEMMAPASSWORD
 
 Note: You must be CD'd within the directory where your input file is located. Furthermore, these scripts must be within within "~/Projects/Pavlab_Curators/filter_from_gemma_api"
 

@@ -1,7 +1,8 @@
 #
-#Purpose : Filter experiments that are complete. If an experiment is Public, had a DEA, and is untroubled, we say it is complete. Outputs a GSE of experiments that
+#Purpose : Filter experiments that are complete. If an experiment is Public,and is untroubled and we say it is complete. Outputs a GSE of experiments that
 #are complete, and GSEs that are NOT complete
-#
+#However, there are some special types of experiments, such as sample studies, that don't have designs. If an experiment has a sample study tag, then it is counted as complete even if it does not have a DEA
+#Furthermore, it is commonplace to push through experiments that do not have DEA-usable data, but are still propper. So overall, DEA's are not neccesary for our definition of complete
 
 
 #---------------------------
@@ -21,7 +22,6 @@ if (file.exists(paste0(results_dir,"/","API_output"))) {
 api_output_compressed <- API_output %>%
   select(shortName, isPublic, diff, needsAttention)
 
-api_output_compressed$isPublic
 
 #------------------get public experiments and private experiments
 
@@ -44,8 +44,7 @@ diff_gses <-  api_output_compressed %>%
 
 #---------------gses that are completed: they have diff, are public, and do not "need attention"
 
-completed_gses <- diff_gses %>%
-  filter(diff_gses$isPublic == TRUE & diff_gses$needsAttention == FALSE)
+completed_gses <- filter(public_gses, needsAttention == FALSE)
 
 #---------------geses that are not completed:
 
