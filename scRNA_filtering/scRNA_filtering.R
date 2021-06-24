@@ -27,7 +27,7 @@ running_dir <- dirname(getActiveDocumentContext()$path)
 #target_dir is the directory where your input_GSEids.txt file is, and where you will output your results. By default it is == running_dir
 target_dir <- running_dir
 #input_GSEids.txt is your text file with GSEIds you are testing. The file must be \n delimited
-input_GSEids.txt <- "negative_sc_hits.txt"
+input_GSEids.txt <- "input_GSEids.txt"
 
 #---Note: GSEs that are split (have .1, .2 ... after its GSEid), cannot be retrieved from GEO. This script takes off the split and uses the base GSE for API accession.
 #As a result, if it turns out that the base has scRNA/lnc, the outputted GSEid will NOT have the split name on it. You must manually check the outputs
@@ -83,6 +83,7 @@ gseids_uniq <- unique(gseids)
 #dictionary <- lapply(dictionary, function(x) <- dictionary[length(dictionary$V1)==1])
 #****** Is this what you were trying to do?
 clean_gseids<- lapply(gseids[,1], function(gse) str_replace(pattern = "\\.[:digit:].?", replacement =  "", string = gse))
+clean_gseids<- lapply(gseids[,1], function(gse) str_replace(pattern = " ", replacement =  "", string = gse))
 
 #gseids_clean <- str_extract(string = "GSE15123.1", pattern = "\\..*")
 #str_view(string = "GSE15123.1", pattern = "\\..*")
@@ -94,10 +95,18 @@ clean_gseids<- lapply(gseids[,1], function(gse) str_replace(pattern = "\\.[:digi
 filter_scRNA <- function(GSEid) {
   
   #---Get getGEO information for a GSE
-  gse_data <- getGEO(GSEid, GSEMatrix = FALSE, destdir = target_dir)
+  tryCatch(
+    {
+      gse_data <- getGEO(GSEid, GSEMatrix = FALSE, destdir = target_dir)
+    },
+    error=function(cond) {
+
+      warning(paste(GSEid, "failed API retrieval"))
+      return(c(GSEid,"FAIL"))
+    }
+  )
   
   #---Get metadata from the gse_data
-  
   gse_meta <- Meta(gse_data)
   
   n_samples <- length(gse_meta$sample_id)
@@ -200,15 +209,26 @@ sep_lnc <- function(GSEid_with_string) {
   }
 }
 
+sep_fail <- function(GSEid_with_string) { 
+  if (GSEid_with_string[2] == "FAIL"){
+    return (GSEid_with_string[1])
+  }
+}
+
 scRNA_GSEs <-lapply(questionable_GSEs_filtered,sep_sc)
 scRNA_GSEs <- scRNA_GSEs[lengths(scRNA_GSEs) != 0]
 
 lnc_GSEs <- lapply(questionable_GSEs_filtered,sep_lnc)
 lnc_GSEs <- lnc_GSEs[lengths(lnc_GSEs) != 0]
 
+fail_GSEs <- lapply(questionable_GSEs_filtered,sep_fail)
+fail_GSEs <- fail_GSEs[lengths(fail_GSEs) != 0]
+
+
 
 write_delim(as.data.frame(scRNA_GSEs), file = paste0(target_dir, "/", "scRNA_GSEids.txt"), delim = "\n", col_names = FALSE)
 write_delim(as.data.frame(lnc_GSEs), file = paste0(target_dir, "/", "lnc_GSEs.txt"), delim = "\n", col_names = FALSE)
+write_delim(as.data.frame(fail_GSEs), file = paste0(target_dir, "/", "fail_GSEs.txt"), delim = "\n", col_names = FALSE)
 
 
 
