@@ -1,24 +1,34 @@
 # Loading Libraries
+list.of.packages <- c("googlesheets4", "rstudioapi", "gtools")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
 library(data.table)
 library(gtools)
-
+library(rstudioapi)
+library(googlesheets4)
 #########################
-"""
-Purpose: Confirm that experiments on the temporary greenlist are greenlisted, and to see if any of those experiements have problems being greenlisted
 
-Returns cleanGreenList.tsv: a tab deliniated file with ee.id and GSE.id of experiments that were successfully greenlisted
-Returns Recuration.tsv: a tab deliniated file with ee.id and GSE.id of experiments that were not successfully greenlisted, and require re-curation
+#Purpose: Confirm that experiments on the temporary greenlist are greenlisted, and to see if any of those experiements have problems being greenlisted
 
-Three fields must be edited prior to running this script
-1)greenTable is a tsv deliniated table of the temporary greenlist. It must have column id's ee.ID and ee.Name respectively. Change the location from which fread opens this file
-2)Change the directory to which the Recuration.tsv file is directed. Change it to your home/user/etc, wherever you want it to be outputted
-3)Change the directory to which cleanGreenList.tsv is directed. change it to your home/user/etc, wherever you want it to be outputted
+#Returns cleanGreenList.tsv: a tab deliniated file with ee.id and GSE.id of experiments that were successfully greenlisted
+#Returns Recuration.tsv: a tab deliniated file with ee.id and GSE.id of experiments that were not successfully greenlisted, and require re-curation
+#Three fields must be edited prior to running this script
+#1)greenTable is a tsv deliniated table of the temporary greenlist. It must have column id's ee.ID and ee.Name respectively. Change the location from which fread opens this file
+#2)Change the directory to which the Recuration.tsv file is directed. Change it to your home/user/etc, wherever you want it to be outputted
+#3)Change the directory to which cleanGreenList.tsv is directed. change it to your home/user/etc, wherever you want it to be outputted
 
-"""
 ########################
 
+#*****************************Change variables here******************************
+url_to_sheet = "https://docs.google.com/spreadsheets/d/17xm2eFFqhhT-M6-jTC_lsar7RMgk8Ln-TwQPDWlRfIY/edit?ts=5744cba9#gid=956906386"
+sheet_name ="[April 2021] Curation Complete (Green List)"
+ #********************************************************************************
+## Read From sheet name [April 2021] Curation Complete (Green List) on google sheets. Change the link and name of sheet accordingly
+greenTable <- read_sheet(url_to_sheet,
+                       sheet = sheet_name, range = cell_cols(1:2))
+setDT(greenTable)
 # Load Tables
-greenTable = fread(######'/home/user/curation_complete_list.tsv######, sep = '\t', header = TRUE, select = 1:2)
+#greenTable = fread(######'/home/user/curation_complete_list.tsv######, sep = '\t', header = TRUE, select = 1:2)
 eeTable = fread('/space/grp/nlim/CronGemmaDump/EE_Dump.TSV', sep = '\t', header = TRUE, quote = '')
 eeTable = eeTable[, .(ee.ID, ee.Name, ee.OriginalID)]
 
@@ -99,9 +109,11 @@ problemID_ALL = unique(c(
 	problemID_5A
 ))
 recurationTable = eeTable[.(problemID_ALL), .(ee.ID, ee.Name), on = 'ee.ID']
+x <- dirname(getActiveDocumentContext()$path)
+setwd(x)
 #write.table(recurationTable, file = 'OneOffScripts/Curation/Recuration.tsv', sep = '\t', quote = FALSE, col.names = TRUE, row.names = FALSE)
-write.table(recurationTable, file = ######'/home/user/Recuration.tsv'######, sep = '\t', quote = FALSE, col.names = TRUE, row.names = FALSE)
+write.table(recurationTable, file = "Recuration.tsv", sep = '\t', quote = FALSE, col.names = TRUE, row.names = FALSE)
 
 # Dump out Cleaned GreenList
-write.table(greenTable, file = ######'/home/user/greenlist_clean/cleanGreenList.tsv'######, sep = '\t', quote = FALSE, col.names = TRUE, row.names = FALSE)
+write.table(greenTable, file = "cleanGreenList.tsv", sep = '\t', quote = FALSE, col.names = TRUE, row.names = FALSE)
 
