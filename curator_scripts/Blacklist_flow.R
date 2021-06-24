@@ -2,7 +2,7 @@
 ###       ----> Put it in the same folder as this script
 
 ### ----------------- Install necessary packages in not installed -------------- ###
-list.of.packages <- c("tidyverse", "dplyr", "data.table", "gemmaAPI", "getPass", "rentrez", "googlesheets4")
+list.of.packages <- c("tidyverse", "dplyr", "data.table", "gemmaAPI", "getPass", "rentrez", "googlesheets4", "multidplyr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 ## Import packages
@@ -28,6 +28,8 @@ library(rentrez)
 ### function for extracting title using a GSE
 extract_gse <- function(gses) {
   sapply(gses, function(gse){
+    while (TRUE){
+    tryCatch({
     if(!is.null(gse)){
       if (grepl("\\.", gse)){
         gse <- gsub("\\..*","",gse)
@@ -39,13 +41,18 @@ extract_gse <- function(gses) {
     }else{
       print(gse)
       return("") 
+    }}, 
+    error=function(x){
+      break
+    })}
     }
-  })
+  )
 }
+
 
 ### Adding titles to each GSEs
 raw_list <- raw_list %>%
-  mutate(Name=extract_gse(raw_list$Accession))
+  mutate(Name=extract_gse(Accession))
 
 ### Clean duplicates
 raw_list <- raw_list[!duplicated(raw_list[,1]),]
@@ -56,11 +63,11 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
   plat_form <- ".*(platform|plat|form|unusable|unsupported).*"
   to_be_deleted <- ".*(delet(ed)*|mark(ed)?).*"
   pipe_line_problem <- ".*(stop|rna-?seq|(pipe(line)?)|corrupted|line).*"
-  unusable <- "(data)? ?quality|unusable|poor"
+  #unusable <- "(data)? ?quality|unusable|poor"
   zscore <- ".*((z( )?score)|z-?score|score).*"
   single_cell <- ".*((single(-)?|( )?cell)|sc).*"
   long_rna<- ".*(long|lnc(rna)?).*"
-  unavilable <- ".*(unavailable|available|supplements).*"
+  #unavilable <- ".*(unavailable|available|supplements).*"
   should_not_blackist <- ".*(replicate|one|n ?= ?1|condition).*"
   
   ## The actual output text for each category ##
@@ -68,11 +75,11 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
   text_dye_swap <- "Unsupported design: Dye-swap"
   text_platform <- "Unsupported platform"
   text_pipeline <- "Raw RNA-seq read data unavailable/unusable"
-  #text_unusable <- "Unable to retrieve data from GEO"
+  text_unusable <- "Unable to retrieve data from GEO"
   text_zscore <- "Unsupported quantitation type"
   text_single_cell <- "Unsupported experiment type: Single cell"
   text_long_rna <- "Unsupported experiment type: Long non-coding RNA"
-  #text_unavilable <- "Insufficent available information in paper/GEO"
+  text_unavilable <- "Insufficent available information in paper/GEO"
   text_to_be_deleted <- "Flagged as to be deleted. More information needed"
   text_should_not_blacklist <- "This experiment probably shoudn't be on the balcklist. Double check what cateogry, or add a category"
   text_no_match <- "No match for this reason. Check Google Sheet for the correct word to use. Or if applicable, add a new category"
@@ -96,9 +103,9 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                  ifelse(
                    grepl(pipe_line_problem, tolower(x)),
                    text_pipeline,
-                   ifelse(
-                     grepl(unusable, tolower(x)),
-                     text_unusable,
+                   #ifelse(
+                     #grepl(unusable, tolower(x)),
+                     #text_unusable,
                      ifelse(
                        grepl(zscore, tolower(x)),
                        text_zscore,
@@ -108,9 +115,9 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                          ifelse(
                            grepl(long_rna, tolower(x)),
                            text_long_rna,
-                           ifelse(
-                             grepl(unavilable, tolower(x)),
-                             text_unavilable,
+                           #ifelse(
+                            #grepl(unavilable, tolower(x)),
+                             #text_unavilable,
                                ifelse(
                                  grepl(should_not_blackist, tolower(x)),
                                  text_should_not_blacklist,
@@ -124,10 +131,9 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                    )
                  )
              )
-           ))
   }
   
-  
+
 ### Create a new column that has all the standardized reasons
 processed_list <- raw_list %>% 
   mutate(processed_reason=regex_check(Reason))

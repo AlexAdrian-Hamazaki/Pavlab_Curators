@@ -25,7 +25,7 @@ def main():
 
     print ('Start scrapping using the Gemma REST_api')
     api_url= 'https://gemma.msl.ubc.ca/rest/v2/datasets/{}?offset=0&limit=20'.format(GSE)
-    plat= "https://gemma.msl.ubc.ca/rest/v2/datasets/GSE98566/platforms".format(GSE)
+    plat= "https://gemma.msl.ubc.ca/rest/v2/datasets/{}/platforms".format(GSE)
     # Add basic authentication header
     request = urllib2.Request(api_url)
     request.add_header("Authorization", "Basic {}".format(base64string)) 
@@ -40,13 +40,13 @@ def main():
 	    print("{} has batch info, correcting now".format(GSE))
 	    state = "True"
 
-    request = urllib2.Request(api_url)
+    request = urllib2.Request(plat)
     request.add_header("Authorization", "Basic {}".format(base64string)) 
     response = urllib2.urlopen(request)
     text = response.read()
     platform_dict = json.loads(text)
     platform=" "
-    if re.match("^Affy", platform_dict[u'data'][0]["name"]):
+    if re.match("^Affy", platform_dict[u'data'][0][u'name']):
         platform = "affy"
     
     
