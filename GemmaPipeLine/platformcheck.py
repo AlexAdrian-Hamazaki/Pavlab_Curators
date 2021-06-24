@@ -40,7 +40,7 @@ def main():
 					platform_dict = json.loads(text)
 					platforms.append(platform_dict[u'data'][0][u'name'].encode('ascii', 'ignore'))
 				except urllib2.HTTPError:
-					break
+					platforms.append("Does not exist")
 				except error:
 					exit("something happend {}".format(error))
 				break

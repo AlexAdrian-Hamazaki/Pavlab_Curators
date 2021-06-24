@@ -10,9 +10,14 @@ library(rvest)
 library(rstudioapi)
 x <- dirname(getActiveDocumentContext()$path)
 setwd(x)
+##***************Change the variables here************************
+url_to_sheet = "https://docs.google.com/spreadsheets/d/15w03FK5pzr19yqReWLV_Kai5w0740N91RyNbjDscziY/edit#gid=287890379"
+sheet_name ="SubSuperFiltered"
+##****************************************************************
+
 ## Read From sheet name SubSuperFiltered on google sheets. Change the link and name of sheet accordingly
-raw_list <- read_sheet("https://docs.google.com/spreadsheets/d/15w03FK5pzr19yqReWLV_Kai5w0740N91RyNbjDscziY/edit#gid=287890379",
-                       sheet = "SubSuperFiltered")
+raw_list <- read_sheet(url_to_sheet,
+                       sheet = sheet_name)
 
 library(rentrez)
 library(stringr)
