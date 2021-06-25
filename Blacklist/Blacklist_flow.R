@@ -10,8 +10,20 @@ library(tidyverse)
 library(dplyr)
 library(data.table)
 library(googlesheets4)
-x <- dirname(getActiveDocumentContext()$path)
-setwd(x)
+try <- 0
+tries <- 20
+while (TRUE && try < tries){
+  tryCatch({
+    x <- dirname(getActiveDocumentContext()$path)
+    setwd(x)
+    break
+  }, error=function(x){
+    print("cannot set directory try again")
+    try <- try + 1
+    next
+  })
+}
+
 ##***************Change the variables here************************
 url_to_sheet = "https://docs.google.com/spreadsheets/d/17xm2eFFqhhT-M6-jTC_lsar7RMgk8Ln-TwQPDWlRfIY/edit?ts=5744cba9#gid=1202292448"
 sheet_name ="Platform/Experiment Blacklist Form"
@@ -25,7 +37,7 @@ raw_list <- read_sheet(url_to_sheet,
 
 ## Reanme Columns accordingly
 raw_list <- raw_list %>%
-  rename(Accession=1, Reason=2, Name=3)
+  rename("#Accession"=1, Reason=2, Name=3)
 raw_list <- raw_list %>%
   select(c(1,2,3))
 
@@ -35,7 +47,8 @@ library(rentrez)
 ### function for extracting title using a GSE
 extract_gse <- function(gses) {
   sapply(gses, function(gse){
-    while (TRUE){
+    try <- 0
+    while (TRUE && try < tries){
     tryCatch({
     if(!is.null(gse)){
       if (grepl("\\.", gse)){
@@ -50,7 +63,9 @@ extract_gse <- function(gses) {
       return("") 
     }}, 
     error=function(x){
-      break
+      print("Cannot retrive GSE. Try again")
+      try <- try + 1
+      next
     })}
     }
   )
@@ -59,7 +74,7 @@ extract_gse <- function(gses) {
 
 ### Adding titles to each GSEs
 raw_list <- raw_list %>%
-  mutate(Name=extract_gse(Accession))
+  mutate(Name=extract_gse(raw_list$`#Accession`))
 
 ### Clean duplicates
 raw_list <- raw_list[!duplicated(raw_list[,1]),]
@@ -192,9 +207,9 @@ good_list <- processed_list %>%
 good_list <- good_list %>% select(1,4,3)
 
 library(readr)
-write_csv(full_list, 'full_list.csv')
-write_csv(double_check_list, 'double_check_list.csv')
-write_csv(good_list, 'blacklist_list.csv')
+write_tsv(full_list, 'full_list.tsv')
+write_tsv(double_check_list, 'double_check_list.tsv')
+write_tsv(good_list, 'blacklist_list.tsv')
 
 
 
