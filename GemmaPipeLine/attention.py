@@ -49,7 +49,6 @@ def main():
                 for lst in experiments_dict[u'data']:
                     if lst[u'predictedOutlier'] == 'true' or  lst[u'predictedOutlier'] == True:
                         attention_set.add(GSE)
-                        print(GSE + "is done!")
                         
                 api_url= 'https://gemma.msl.ubc.ca/rest/v2/datasets/{}?offset=0&limit=20'.format(GSE)
                 # Add basic authentication header
