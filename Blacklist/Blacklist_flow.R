@@ -91,6 +91,7 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
   long_rna<- ".*(long|lnc(rna)?).*"
   #unavilable <- ".*(unavailable|available|supplements).*"
   should_not_blackist <- ".*(replicate|one|n ?= ?1|condition).*"
+  mirna <- "mirna|micro|mi"
   
   ## The actual output text for each category ##
   text_taxon <- "Unsupported taxon"
@@ -102,6 +103,7 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
   text_single_cell <- "Unsupported experiment type: Single cell"
   text_long_rna <- "Unsupported experiment type: Long non-coding RNA"
   text_unavilable <- "Insufficent available information in paper/GEO"
+  text_mirna <- "Unsupported experiment type: micro RNA"
   text_to_be_deleted <- "Flagged as to be deleted. More information needed"
   text_should_not_blacklist <- "This experiment probably shoudn't be on the balcklist. Double check what cateogry, or add a category"
   text_no_match <- "No match for this reason. Check Google Sheet for the correct word to use. Or if applicable, add a new category"
@@ -137,9 +139,9 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                          ifelse(
                            grepl(long_rna, tolower(x)),
                            text_long_rna,
-                           #ifelse(
-                            #grepl(unavilable, tolower(x)),
-                             #text_unavilable,
+                           ifelse(
+                           grepl(mirna, tolower(x)),
+                           text_mirna,
                                ifelse(
                                  grepl(should_not_blackist, tolower(x)),
                                  text_should_not_blacklist,
@@ -153,6 +155,7 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                    )
                  )
              )
+    )
   }
   
 
