@@ -1,9 +1,2 @@
 ee.ID	ee.Name	ee.OriginalID	reason.x	reason.y	reason
-9770	GSE51424.1	GSE51424	ee.ID and GSE are not correctly matched. Double check	NA	NA
-14950	GSE124681	GSE124681	ee.ID and GSE are not correctly matched. Double check	NA	NA
-16191	GSE99074.1	GSE99074	ee.ID and GSE are not correctly matched. Double check	NA	NA
-14220	GSE83217	GSE83217	ee.ID and GSE are not correctly matched. Double check	NA	NA
-15668	GSE97353	GSE97353	ee.ID and GSE are not correctly matched. Double check	NA	NA
-11899	GSE11149	GSE11149	ee.ID and GSE are not correctly matched. Double check	NA	NA
-16684	GSE145006	GSE145006	ee.ID and GSE are not correctly matched. Double check	NA	NA
-16725	GSE124439	GSE124439	ee.ID and GSE are not correctly matched. Double check	NA	NA
+NA	NA	NA	ee.ID and GSE are not correctly matched. Double check	ee.ID duplicated. Double check	GSE name duplicated. Double check
