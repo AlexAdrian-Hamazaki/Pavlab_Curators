@@ -101,6 +101,7 @@ for (gse in unlist(new_vector)) {
 
 
 out_put_list <- data.frame(lapply(new_list, as.character), stringsAsFactors=FALSE)
+sheet_write(sub_frame, ss=url_to_sheet, sheet="SubOnly")
 write.csv(sub_frame, "sub_only.csv", row.names=FALSE)
 write.csv(out_put_list, "super+sub.csv", row.names=FALSE)
 
