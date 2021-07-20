@@ -59,7 +59,7 @@ get_sub <- function(gses){
 new_list <- raw_list %>% mutate(subseries=get_sub(.[[1]]))
 
 sub_frame <- data.frame(Accessions=character(), Species=character(), Sample_Size=integer(), Title=character(), Platforms=character(), 
-                        Num_of_Platforms=integer(), Status=character())
+                        Num_of_Platforms=integer(), Status=character(), Taxon=character(), Platform_type=Character())
 
 for (gse in unlist(new_vector)) {
   tryCatch({
@@ -101,7 +101,7 @@ for (gse in unlist(new_vector)) {
 
 
 out_put_list <- data.frame(lapply(new_list, as.character), stringsAsFactors=FALSE)
-sheet_write(sub_frame, ss=url_to_sheet, sheet="SubOnly")
+sheet_write(sub_frame, ss=url_to_sheet, sheet="SubOnlyFiltered")
 write.csv(sub_frame, "sub_only.csv", row.names=FALSE)
 write.csv(out_put_list, "super+sub.csv", row.names=FALSE)
 
