@@ -62,6 +62,7 @@ sub_frame <- data.frame(Accessions=character(), Species=character(), Sample_Size
                         Num_of_Platforms=integer(), Status=character())
 
 for (gse in unlist(new_vector)) {
+  tryCatch({
   search = entrez_search(db="gds", term=paste(gse,"[ACCN]"), retmax=1)
   search_sum <- entrez_summary("gds", id =search$ids)
   plats = unlist(strsplit(search_sum$gpl, ";"))
@@ -91,6 +92,11 @@ for (gse in unlist(new_vector)) {
                         Platforms=platforms, Num_of_Platforms=length(plats))
   print(paste0("Adding row "))
   print("____________________________________________")
+  },
+  error=function(cond){
+    sub_frame <- sub_frame %>% add_row(Accessions=gse, Species=NULL, Sample_Size=search_sum$NULL, Title=NULL, 
+                                       Platforms=NULL, Num_of_Platforms=NULL)
+  })
 }
 
 
