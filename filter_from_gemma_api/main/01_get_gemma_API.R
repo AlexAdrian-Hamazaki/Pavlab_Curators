@@ -35,6 +35,9 @@ message('Attempted to login to gemma account')
 
 df_input_GSEids <- read_delim(file = paste0(target_dir,"/",input_GSEids), col_names=FALSE, delim = "\n")
 
+#----------------remove empty spaces
+df_input_GSEids$X1 <- str_replace(string = df_input_GSEids$X1, pattern = " ", replacement =  "")
+
 #---remove non unique GSEids. Save it as a text file
 df_input_GSEids_unique <- df_input_GSEids %>%
   distinct(X1)
@@ -79,7 +82,7 @@ row.names(df_output_API) <- df_output_API$shortName
 # rm(l_output_API)
 
 #--------------save df_output_API as an rdsobject
-saveRDS(df_output_API, file = paste0(results_dir,"/","API_output"))
+saveRDS(df_output_API, file = paste0(results_dir,"/","API_output.rds"))
 
 
 # get_API_data <- function(GSEid) {
