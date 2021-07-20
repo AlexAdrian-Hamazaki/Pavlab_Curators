@@ -1,14 +1,14 @@
 #!/usr/bin/env Rscript
-input_GSEids <- commandArgs(TRUE)[1]
-username <-  commandArgs(TRUE)[2]
-password <- commandArgs(TRUE)[3]
-message(paste("Username Input:", username))
-message(paste("Password Input:", password))
+# input_GSEids <- commandArgs(TRUE)[1]
+# username <-  commandArgs(TRUE)[2]
+# password <- commandArgs(TRUE)[3]
+# message(paste("Username Input:", username))
+# message(paste("Password Input:", password))
 
 # 
-# input_GSEids <- "testers.txt"
-# username <-  "alexadrianhamazaki"
-# password <- "Doglukepotato3!"
+input_GSEids <- "testers.txt"
+username <-  "alexadrianhamazaki"
+password <- "Doglukepotato3!"
 
 
 #---For now, the running directory and target directory are hard wired to this folder system. This is where they sohuld be if you've cloned from github
@@ -27,13 +27,14 @@ if (!dir.exists(paste0(results_dir))) {
   dir.create(paste0(results_dir))
 }
 
+setwd(running_dir)
 #--- load functions
 source("main/functions.R")
 
 
 #---Retrieve Gemma API information for all of the GSEs
 source("main/01_get_gemma_API.R")
-stopifnot(file.exists(paste0(results_dir,"/API_output")))
+stopifnot(file.exists(paste0(results_dir,"/API_output.rds")))
 
 
 #---Filter Gemma API for RNAseq, Microarray (one and two color) experiments. and "other" experiments
