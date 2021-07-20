@@ -59,9 +59,10 @@ get_sub <- function(gses){
 new_list <- raw_list %>% mutate(subseries=get_sub(.[[1]]))
 
 sub_frame <- data.frame(Accessions=character(), Species=character(), Sample_Size=integer(), Title=character(), Platforms=character(), 
-                        Num_of_Platforms=integer(), Status=character())
+                        Num_of_Platforms=integer(), Status=character(), Taxon=character(), Platform_type=Character())
 
 for (gse in unlist(new_vector)) {
+  tryCatch({
   search = entrez_search(db="gds", term=paste(gse,"[ACCN]"), retmax=1)
   search_sum <- entrez_summary("gds", id =search$ids)
   plats = unlist(strsplit(search_sum$gpl, ";"))
@@ -91,10 +92,16 @@ for (gse in unlist(new_vector)) {
                         Platforms=platforms, Num_of_Platforms=length(plats))
   print(paste0("Adding row "))
   print("____________________________________________")
+  },
+  error=function(cond){
+    sub_frame <- sub_frame %>% add_row(Accessions=gse, Species=NULL, Sample_Size=search_sum$NULL, Title=NULL, 
+                                       Platforms=NULL, Num_of_Platforms=NULL)
+  })
 }
 
 
 out_put_list <- data.frame(lapply(new_list, as.character), stringsAsFactors=FALSE)
+sheet_write(sub_frame, ss=url_to_sheet, sheet="SubOnlyFiltered")
 write.csv(sub_frame, "sub_only.csv", row.names=FALSE)
 write.csv(out_put_list, "super+sub.csv", row.names=FALSE)
 
