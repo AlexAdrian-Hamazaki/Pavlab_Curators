@@ -4,7 +4,7 @@
 *.json
 # Session Data files
 .RData
-
+*.tsv
 #virtual enviroment
 curator
 *.csv

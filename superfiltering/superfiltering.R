@@ -20,7 +20,6 @@ library(stringr)
 x <- dirname(getActiveDocumentContext()$path)
 setwd(x)
 
-
 identify_subseries <- function(gse, char_input_gses) {
   # Identify the GSEs that are superseries, if they are superseries, 
   # the identify if it's subseries are also in the input file. If they are,
@@ -217,6 +216,3 @@ write_delim( x = (positive_hits[2]),
              file = "table_positive_hits.tsv",
              delim = "\t",
              col_names = TRUE)
-
-
-

@@ -1,10 +1,189 @@
 Loading jars from /space/grp/lib/Gemma
-[Gemma 2021-06-18 10:50:19,115] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:22,753] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,097] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,127] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,152] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,183] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,195] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,206] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
-[Gemma 2021-06-18 10:50:23,218] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:21,886] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:25,679] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:25,992] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,033] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,075] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,120] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,136] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,152] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:26,189] INFO [main] org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(172) | Loading properties file from class path resource [default.properties]
+[Gemma 2021-06-23 16:38:28,532] INFO [main] ubic.gemma.core.ontology.OntologyServiceImpl.afterPropertiesSet(179) | Auto-loading of ontologies suppressed
+[Gemma 2021-06-23 16:38:29,344] INFO [main] ubic.gemma.persistence.util.SpringContextUtil.getApplicationContext(64) | Got context in 9059ms
+[Gemma 2021-06-23 16:38:29,487] INFO [main] ubic.gemma.core.util.AbstractSpringAwareCLI.authenticate(258) | Logged in as Wilson
+[Gemma 2021-06-23 16:38:29,501] INFO [main] ubic.gemma.core.apps.LoadExpressionDataCli.doWork(137) | Got accession(s) from command line GSE53761
+[Gemma 2021-06-23 16:38:29,546] INFO [main] ubic.gemma.core.loader.expression.geo.GeoDomainObjectGenerator.generate(71) | Generating objects for GSE53761 using GeoDomainObjectGenerator
+[Gemma 2021-06-23 16:38:29,549] INFO [main] ubic.gemma.core.util.NetDatasourceUtil.connect(46) | Connecting to ftp.ncbi.nih.gov with anonymous : gemma@ubic.ca
+[Gemma 2021-06-23 16:38:31,496] INFO [pool-25-thread-1] ubic.gemma.core.loader.util.fetcher.FtpFetcher$1.call(91) | Fetching geo/series//GSE53nnn/GSE53761/soft/GSE53761_family.soft.gz to /cosmos/scratch/curator-scratch/arraydata/GEO/GSE53761/GSE53761.soft.gz
+[Gemma 2021-06-23 16:38:41,496] INFO [main] ubic.gemma.core.loader.util.fetcher.FtpFetcher.doTask(118) | Done: local file is /cosmos/scratch/curator-scratch/arraydata/GEO/GSE53761/GSE53761.soft.gz
+[Gemma 2021-06-23 16:38:41,598] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseLine(974) | Starting platform GPL17543
+[Gemma 2021-06-23 16:38:42,534] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300223
+[Gemma 2021-06-23 16:38:42,536] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.model.GeoValues.addSample(340) | Sample lacks data, no data will be imported for this data set
+[Gemma 2021-06-23 16:38:42,537] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,539] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300224
+[Gemma 2021-06-23 16:38:42,539] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,541] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300225
+[Gemma 2021-06-23 16:38:42,541] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,544] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300226
+[Gemma 2021-06-23 16:38:42,544] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,547] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300227
+[Gemma 2021-06-23 16:38:42,547] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:42,549] WARN [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parseSampleLine(1451) | No data for sample GSM1300228
+[Gemma 2021-06-23 16:38:42,549] INFO [pool-26-thread-1] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.addMissingData(227) | Sample is not expected to have any data
+[Gemma 2021-06-23 16:38:46,510] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(150) | 46549 lines parsed.
+[Gemma 2021-06-23 16:38:46,511] INFO [main] ubic.gemma.core.loader.expression.geo.GeoFamilyParser.parse(172) | Done parsing.
+[Gemma 2021-06-23 16:38:47,975] INFO [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.checkSamplesAreNew(362) | Series now contains 6 (removed 0)
+[Gemma 2021-06-23 16:38:47,979] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(1880) | Converting series: GSE53761
+[Gemma 2021-06-23 16:38:47,979] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(1899) | Series has 6 samples in total
+[Gemma 2021-06-23 16:38:47,997] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: autism, ignoring
+[Gemma 2021-06-23 16:38:47,999] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: c57bl/6, ignoring
+[Gemma 2021-06-23 16:38:48,002] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: fvb, ignoring
+[Gemma 2021-06-23 16:38:48,006] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: mock infected, ignoring
+[Gemma 2021-06-23 16:38:48,007] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.initializeTerm2OntologyMappings(918) | Duplicate value: putamen, ignoring
+[Gemma 2021-06-23 16:38:48,012] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatform(1197) | Converting platform: GPL17543
+[Gemma 2021-06-23 16:38:48,013] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.determinePlatformExternalDatabase(2616) | External database is ExternalDatabase Name=Mus musculus ORFs
+[Gemma 2021-06-23 16:38:48,035] WARN [main] ubic.gemma.core.loader.expression.geo.model.GeoPlatform.getColumnData(259) | No platform information for column=CLONE_ID
+[Gemma 2021-06-23 16:38:48,035] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatformElements(1307) | Will not convert elements for this platform - set forceConvertElements to override
+[Gemma 2021-06-23 16:38:48,036] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertPlatform(1266) | Some or all identifiers may have been skipped during parse
+[Gemma 2021-06-23 16:38:48,037] INFO [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertSeriesSingle(2048) | Expression Experiment from GSE53761 has 6 bioassays and 6 biomaterials.
+[Gemma 2021-06-23 16:38:48,038] WARN [main] ubic.gemma.core.loader.expression.geo.GeoConverterImpl.convertVectorsForPlatform(2390) | Platform characteristics indicate data from GEO should be ignored or will not be present anyway (GPL17543)
+[Gemma 2021-06-23 16:38:48,038] WARN [main] ubic.gemma.core.loader.expression.geo.service.GeoServiceImpl.check(274) | Experiment has no data vectors (this might be expected): ExpressionExperiment Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:38:53,013] INFO [main] ubic.gemma.persistence.persister.ArrayDesignPersister.findOrPersistArrayDesign(104) | Platform ArrayDesign Name=Illumina MouseWG-6 v2.0 R2 expression beadchip (GPL17543) already exists, returning...
+[Gemma 2021-06-23 16:38:55,105] INFO [main] ubic.gemma.persistence.service.expression.arrayDesign.ArrayDesignDaoImpl.getBioSequences(148) | Fetch sequences: 2056ms
+[Gemma 2021-06-23 16:38:55,225] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persist(95) | >>>>>>>>>> Persisting ExpressionExperiment Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:38:55,281] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.processBioAssays(539) | Filling in bioassays
+[Gemma 2021-06-23 16:38:58,181] INFO [main] ubic.gemma.persistence.persister.ExpressionPersister.persist(132) | <<<<<< FINISHED Persisting ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:38:58,275] INFO [main] ubic.gemma.persistence.service.expression.experiment.ExpressionExperimentDaoImpl.loadDetailsValueObjects(1088) | EE details query: 7 ms for 1 results
+[Gemma 2021-06-23 16:38:58,298] INFO [main] ubic.gemma.persistence.service.expression.experiment.ExpressionExperimentDaoImpl.loadDetailsValueObjects(1107) | EE details VO query + postprocessing: 30 ms
+[Gemma 2021-06-23 16:38:58,315] WARN [main] org.hibernate.hql.ast.QueryTranslatorImpl.list(355) | firstResult/maxResults specified with collection fetch; applying in memory!
+[Gemma 2021-06-23 16:39:00,115] INFO [main] ubic.gemma.core.analysis.report.ArrayDesignReportServiceImpl.generateArrayDesignReport(178) | Generated report for ArrayDesign Id=891 Name=Illumina MouseWG-6 v2.0 R2 expression beadchip (GPL17543)
+[Gemma 2021-06-23 16:39:00,127] INFO [main] ubic.gemma.core.apps.LoadExpressionDataCli.postProcess(279) | Postprocessing ...
+[Gemma 2021-06-23 16:39:00,214] INFO [main] ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.createProcessedDataVectors(103) | Computing processed expression vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+[Gemma 2021-06-23 16:39:00,268] ERROR [main] ubic.gemma.core.util.AbstractCLI.addErrorObject(406) | GSE53761: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+java.lang.IllegalStateException: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:75)
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:255)
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:148)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:90)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at com.sun.proxy.$Proxy171.process(Unknown Source)
+	at ubic.gemma.core.apps.LoadExpressionDataCli.postProcess(LoadExpressionDataCli.java:283)
+	at ubic.gemma.core.apps.LoadExpressionDataCli.processAccession(LoadExpressionDataCli.java:239)
+	at ubic.gemma.core.apps.LoadExpressionDataCli.doWork(LoadExpressionDataCli.java:160)
+	at ubic.gemma.core.util.AbstractCLI.executeCommand(AbstractCLI.java:126)
+	at ubic.gemma.core.apps.GemmaCLI.main(GemmaCLI.java:115)
+Caused by: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+	at ubic.gemma.core.analysis.preprocess.PreprocessorServiceImpl.process(PreprocessorServiceImpl.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:183)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:69)
+	... 13 more
+Caused by: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorServiceImpl.computeProcessedExpressionData(ProcessedExpressionDataVectorServiceImpl.java:304)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:183)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:69)
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:255)
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:148)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:90)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)
+	at org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor.invoke(MethodSecurityInterceptor.java:64)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at ubic.gemma.persistence.service.expression.bioAssayData.$Proxy133.computeProcessedExpressionData(Unknown Source)
+	at ubic.gemma.core.analysis.preprocess.PreprocessorServiceImpl.process(PreprocessorServiceImpl.java:120)
+	... 21 more
+Caused by: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorDaoImpl.createProcessedDataVectors(ProcessedExpressionDataVectorDaoImpl.java:115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:183)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:51)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:51)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:96)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:260)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:94)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:166)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at com.sun.proxy.$Proxy132.createProcessedDataVectors(Unknown Source)
+	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorServiceImpl.createProcessedDataVectors(ProcessedExpressionDataVectorServiceImpl.java:88)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:183)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:166)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:166)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:96)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:260)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:94)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:69)
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:255)
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:148)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:90)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)
+	at org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor.invoke(MethodSecurityInterceptor.java:64)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at ubic.gemma.persistence.service.expression.bioAssayData.$Proxy133.createProcessedDataVectors(Unknown Source)
+	at ubic.gemma.core.analysis.preprocess.ProcessedExpressionDataVectorCreateHelperServiceImpl.createProcessedExpressionData(ProcessedExpressionDataVectorCreateHelperServiceImpl.java:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:317)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:183)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:150)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:166)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:166)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:96)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:260)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:94)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:69)
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:255)
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:148)
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:90)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:161)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:91)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at com.sun.proxy.$Proxy140.createProcessedExpressionData(Unknown Source)
+	at ubic.gemma.persistence.service.expression.bioAssayData.ProcessedExpressionDataVectorServiceImpl.computeProcessedExpressionData(ProcessedExpressionDataVectorServiceImpl.java:294)
+	... 40 more
+[Gemma 2021-06-23 16:39:00,274] ERROR [main] ubic.gemma.core.util.AbstractCLI.summarizeProcessing(448) | 
+---------------------
+Errors occurred during the processing of 1 objects:
+Error	GSE53761: ubic.gemma.core.analysis.preprocess.PreprocessingException: java.lang.RuntimeException: java.lang.IllegalArgumentException: No preferred data vectors for ExpressionExperiment Id=19002 Name=Analysis of gene expression in ALK5Ctrl and ALK5CA mouse hippocampus (GSE53761)
+---------------------
+
+[Gemma 2021-06-23 16:39:00,274] INFO [main] ubic.gemma.core.util.AbstractCLI.executeCommand(135) | Elapsed time: 39 seconds.

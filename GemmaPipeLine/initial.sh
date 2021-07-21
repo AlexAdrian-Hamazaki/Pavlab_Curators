@@ -18,3 +18,6 @@ done
 rm temp.txt
 done
 python attention.py 'initialList.txt' $GEMMAUSERNAME $GEMMAPASSWORD;
+cat attentionList.txt
+echo "These are the experiments requiring attentions"
+rm attentionList.txt

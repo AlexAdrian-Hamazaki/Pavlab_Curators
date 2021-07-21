@@ -1,0 +1,798 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    
+    <style type="text/css">
+      a { text-decoration: none; }
+	.bordergc {background-color: #6699CC;}
+	.bordergd {background-color: #B6C7E5;}
+	.borderge {background-color: #EEF3FB;}
+	.bordergf {background-color: #FFFFFF;}
+	.bordergg {background-color: #CCCCCC;}
+      .small8b { font-size:8pt;
+                font-family: ariel,helvetica,sans-serif;
+                color:#6633cc;
+              }
+      .small8db { font-size:8pt;
+                font-family: ariel,helvetica,sans-serif;
+                color:#4411aa;
+              }
+
+    </style>
+    <META http-equiv="Content-Type"
+      content="text/html; charset=UTF-8">
+    <META name="keywords"
+      CONTENT="NCBI GEO Gene Expression Omnibus microarray oligonucleotide array SAGE">
+    <META name="description"
+      content="NCBI's Gene Expression Omnibus (GEO) is a public archive and resource for gene expression data.">
+
+<meta name="ncbi_app" content="geo">
+<meta name="ncbi_pdid" content="full">
+<meta name="ncbi_phid" content="07516ADE0EE141210000000000000001">
+<meta name="ncbi_sessionid" content="07517377FF379FA1_0000SID">
+
+    <TITLE>
+    GEO Accession viewer
+    </TITLE>
+    <link rel="stylesheet"
+      href="/corehtml/ncbi.css">
+    <!-- GEO_SCRIPT -->
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+SRC="/coreweb/javascript/imagemouseover.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+SRC="/coreweb/javascript/show_message.js"></SCRIPT>
+
+<script type="text/javascript" src="/corehtml/jsutils/utils.1.js"></script>
+
+<script type="text/javascript" src="/corehtml/jsutils/remote_data_provider.1.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+SRC="/geo/js/help_def_messages.js"></SCRIPT>
+
+<script type="text/javascript">
+    window.onload = function () {
+        //old smaller style banner
+        display_global_alert = false;
+        
+        jQuery.getScript("/core/alerts/alerts.js", function () {
+            galert(['#galerts_table','body > *:nth-child(1)'])
+        });
+    }
+</script>
+
+
+
+<LINK  rel = STYLESHEET href = "../info/geo_style.css" Type  = "text/css" >
+<link rel="stylesheet" type="text/css" href="acc.css" />
+  <script language="Javascript">
+
+  function OnFormFieldChange()
+  {
+    var view = document.getElementById("view");
+
+    if(document.getElementById("ViewOptions").form.value == 'html')
+    {
+        view.remove(3);
+        view.remove(2);
+    }
+    else
+    {
+        var NewOption = document.createElement("OPTION");
+
+        NewOption.text = "Full";
+        NewOption.value = "full";
+
+        try
+        {
+            view.add(NewOption, null);
+        }
+        catch(ex)
+        {
+            view.add(NewOption);
+        }
+
+        NewOption = document.createElement("OPTION");
+
+        NewOption.text = "Data";
+        NewOption.value = "data";
+
+        try
+        {
+            view.add(NewOption, null);
+        }
+        catch(ex)
+        {
+            view.add(NewOption);
+        }
+    }
+  }
+
+  function SubmitViewOptionsForm()
+  {
+	var form = document.forms.ViewOptions;
+    if(form.form.value == 'html')
+    {
+		form.form.setAttribute('disabled','disabled');
+		if (form.view.value == 'quick') {
+			form.view.setAttribute('disabled','disabled');
+		}
+		if (form.targ.value == 'self') {
+			form.targ.setAttribute('disabled','disabled');
+		}
+        var token = document.getElementById("token_input");
+        if (token) {
+            form.token.value = token.value;
+        } else {
+            form.token.setAttribute('disabled','disabled');
+        }
+        form.submit();
+    }
+    else
+    {
+        window.open("acc.cgi?acc=" + form.acc.value + "&targ=" + form.targ.value +
+                  "&form=" + form.form.value + "&view=" + form.view.value, "_self");
+    }
+
+    return false;
+  }
+  
+  function ViewOptionsFormKeyDown(event)
+  {
+	if (event == undefined)
+	{    
+		event = window.event;
+	}
+	if (event.keyCode == 13)
+	{
+		SubmitViewOptionsForm();
+		return false;
+	}
+  };
+
+  function OpenFTP(url)
+  {
+    window.open(url.replace('ftp://', 'https://'), '_blank');
+  }
+
+  function OpenLink(url, where)
+  {
+    window.open(url, where);
+  }
+
+  utils.addEvent(window, "load", OnFormFieldChange)
+  </script>
+
+</head>
+<body background="/coreweb/template1/pix/bg_main3.gif" topmargin="20" marginheight="20">
+
+
+<script type="text/javascript" src="/core/jig/1.15.3/js/jig.min.js"></script>
+<script type="text/javascript" src="/corehtml/pmc/granthub/v1/granthubsearch.min.js"></script>
+<script type="text/javascript" src="/geo/js/dd_menu.js"></script>
+	<table width="740" border="0" cellspacing="0" cellpadding="0" align="center" >
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td><a href="/"><img src="/geo/img/ncbi_logo.gif" alt="NCBI Logo" width="145" height="66" border="0"></a></td>
+							<td width="100%" align="center" valign="middle" nowrap background="/coreweb/template1/pix/top_bg_white.gif"><img src="/coreweb/template1/pix/pixel.gif" width="550" height="1" alt="" border="0"><br>
+								<a href="/geo/"><img src="/geo/img/geo_main.gif" alt="GEO Logo" border="0"></a>
+							</td>
+							<td align="right" background="/coreweb/template1/pix/top_bg_white.gif"><img src="/coreweb/template1/pix/top_right.gif" alt="" width="5" height="66" border="0"></td>
+						</tr>
+					</table>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td><img src="/coreweb/template1/pix/top2_left.gif" width="601" height="2" alt="" border="0"></td>
+							<td width="100%" background="/coreweb/template1/pix/top2_mid_bg.gif"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+							<td align="right"><img src="/coreweb/template1/pix/top2_right.gif" alt="" width="14" height="2" border="0"></td>
+						</tr>
+					</table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="galerts_table"/>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tr>
+							<td><img src="/coreweb/template1/pix/top3_ulm_no_a.gif" width="145" height="16" alt="" border="0" usemap="#unlmenu" name="unl_menu_pix"></td>
+							<td background="/coreweb/template1/pix/top3_mainmenu_mid_bg.gif"><img src="/coreweb/template1/pix/top3_mainmenu_left.gif" width="3" height="16" alt="" border="0"></td>
+							<td width="100%" valign="middle" nowrap background="/coreweb/template1/pix/top3_mainmenu_mid_bg.gif">
+
+					<!-- GEO Navigation -->
+			<ul id="geo_nav_bar">
+				<li><a href="#">GEO Publications</a>
+					<ul class="sublist">
+						<li><a href="/geo/info/GEOHandoutFinal.pdf">Handout</a></li>
+						<li><a href="http://nar.oxfordjournals.org/content/41/D1/D991.full">NAR 2013 (latest)</a></li>
+						<li><a href="http://nar.oupjournals.org/cgi/content/full/30/1/207?ijkey=oxMPOWseARs7o&amp;keytype=ref&amp;siteid=nar">NAR 2002 (original)</a></li>
+						<li><a href="/pmc/3531084,3341798,3013736,2686538,2270403,1669752,1619900,1619899,539976,99122">All publications</a></li>
+					</ul>
+				</li>
+				<li><a href="/geo/info/faq.html">FAQ</a></li>
+				<li><a href="/geo/info/MIAME.html" title="Minimum Information About a Microarray Experiment">MIAME</a></li>
+				<li><a href="mailto:geo@ncbi.nlm.nih.gov">Email GEO</a></li>
+			</ul>
+			<!-- END GEO Navigation -->
+
+                    </td>
+                    <td background="/coreweb/template1/pix/top3_mainmenu_mid_bg.gif" align="right"><img src="/coreweb/template1/pix/top3_mainmenu_right.gif" width="5" height="16" alt="" border="0"></td>
+                </tr>
+            </table>
+            
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+                    <td><img src="/coreweb/template1/pix/top4_ulm_left.gif" width="145" height="4" alt="" border="0"></td>
+                    <td width="100%" background="/coreweb/template1/pix/top4_mid_bg.gif"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+                    <td align="right" background="/coreweb/template1/pix/top4_mid_bg.gif"><img src="/coreweb/template1/pix/top4_ulm_right.gif" width="5" height="4" alt="" border="0"></td>
+                </tr>
+            </table>
+    
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr>
+                    <td width=1 background="/coreweb/template1/pix/main_left_bg.gif"><img src="/coreweb/template1/pix/main_left_bg.gif" alt="" width="4" height="3" border="0"></td>
+                    <td width="10000" bgcolor="#F0F8FF">
+                        <table cellpadding="0" cellspacing="0" width="100%"><tr><td><font class="Top_Navigation_text" color="#2F6E87" face="Verdana" size="+1">&nbsp;&nbsp;&nbsp;<a href="/">NCBI</a> &gt; <a href="/geo"><font color="">GEO</font></a> &gt; <a href="acc.cgi"><b>Accession Display</b></a><a href="javascript:RPopUpWindow_Set(geologinbar_location,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></font></td>
+<td align="right">Not logged in | <a href="/geo/submitter?ix=1bqAd_mOtmfgcPymcgqFoTa48WdCvfrKAtziME-UQCU4uzpCZHGst5xS_Kc0ZAPWYuBkaPV_8wQ-mSKGG3BQY">Login</a><a href="javascript:RPopUpWindow_Set(geologinbar_login,260,200,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr></table>
+                    </td>
+                    <td width=1 background="/coreweb/template1/pix/main_right_bg.gif"><img src="/coreweb/template1/pix/main_right_bg.gif" width="4" height="3" alt="" border="0"></td>
+                </tr>
+                <tr>
+                    <td background="/coreweb/template1/pix/main_left_bg.gif"><img src="/coreweb/template1/pix/main_left_bg.gif" width="4" height="1" alt="" border="0"></td>
+                    <td width="10000" bgcolor="#E0EEEE"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+                    <td align="right" background="/coreweb/template1/pix/main_right_bg.gif"><img src="/coreweb/template1/pix/main_right_bg.gif" alt="" width="4" height="1" border="0"></td>
+                </tr>
+
+                <tr>
+                    <td background="/coreweb/template1/pix/main_left_bg.gif"><img src="/coreweb/template1/pix/main_left_bg.gif" width="4" height="3" alt="" border="0"></td>
+                    <td width="100%" bgcolor="White">
+                        <table width="98%" border="0" align="center">
+                            <tr>
+                                <td>
+                                    <table border="0" cellspacing="0" cellpadding="0" align="right" width="100%">
+                                        <tr>
+                                            <td>
+
+ <script type="text/javascript" src="acc.js"></script>
+ <span id="msg_err" style="color:red"></span>
+ <span id="msg_info" style="color:blue"></span>
+<table cellpadding="0" cellspacing="0" style="border: 1px solid #C0F8FF"><tr><td><img alt=" " height="35" src="/coreweb/template1/pix/pixel.gif" width="1"></td>
+<td bgcolor="#F0F8FF" width="100%"><font color="#0066CC" face="Arial" size="1"><div id="HelpMessage" style="font: 11px/11px arial, sans-serif"><strong>GEO help:</strong> Mouse over screen elements for information.</div></font></td>
+</tr></table>
+<form action="acc.cgi" enctype="application/x-www-form-urlencoded" id="ViewOptions" method="POST" name="ViewOptions" target="_self"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td></td>
+<td bgcolor="#CCCCCC" nowrap valign="middle" width="100%"><table align="left" border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><input id="token" name="token" type="hidden" value=""><label for="scope">Scope: </label><select id="scope" name="targ" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_scope)" style="font-size: 10px"><option selected value="self">Self</option>
+<option value="gpl">Platform</option>
+<option value="gsm">Samples</option>
+<option value="gse">Series</option>
+<option value="all">Family</option>
+</select>
+&nbsp;&nbsp;<label for="form">Format: </label><select id="form" name="form" onchange="OnFormFieldChange()" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_format)" style="font-size: 10px"><option value="html">HTML</option>
+<option value="text">SOFT</option>
+<option value="xml">MINiML</option>
+</select>
+&nbsp;&nbsp;<label for="view">Amount: </label><select id="view" name="view" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_amount)" style="font-size: 10px"><option value="brief">Brief</option>
+<option selected value="quick">Quick</option>
+</select>
+&nbsp;<label for="geo_acc">GEO accession: </label><input id="geo_acc" name="acc" onkeydown="ViewOptionsFormKeyDown(event)" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_acc)" style="font-size: 10px" type="text" value="GSE116470">&nbsp;&nbsp;</td>
+<td valign="middle"><img alt="Go" border="0" onclick="SubmitViewOptionsForm()" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_go)" src="/geo/img/buttons/go_button.gif"></td>
+</tr></table></td></tr></table></td>
+</tr></table></form>
+    <table><tr><td><table cellpadding="2" cellspacing="0" width="600"><tr bgcolor="#cccccc" valign="top"><td colspan="2"><table width="600"><tr><td><strong class="acc" id="GSE116470"><a href="/geo/query/acc.cgi?acc=GSE116470" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">Series GSE116470</a></strong></td>
+<td></td>
+<td align="right" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_gds)"><a href="/gds/?term=GSE116470[Accession]">Query DataSets for GSE116470</a></td>
+</tr></table></td></tr>
+<tr valign="top"><td>Status</td>
+<td>Public on Aug 22, 2018</td>
+</tr>
+<tr valign="top"><td nowrap>Title</td>
+<td style="text-align: justify">A Single-Cell Atlas of Cell Types, States, and Other Transcriptional Patterns from Nine Regions of the Adult Mouse Brain</td>
+</tr>
+<tr valign="top"><td nowrap>Organism</td>
+<td><a href="/Taxonomy/Browser/wwwtax.cgi?mode=Info&amp;id=10090" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_organismus)">Mus musculus</a></td>
+</tr>
+<tr valign="top"><td nowrap>Experiment type</td>
+<td>Expression profiling by high throughput sequencing<br></td>
+</tr>
+<tr valign="top"><td nowrap>Summary</td>
+<td style="text-align: justify">We report 690K single-cell transcriptomes from nine different brain regions from adult mice (Frontal and Posterior Cortex, Hippocampus, Thalamus, Cerebellum, Striatum, Globus Pallidus externus/Nucleus Basalis, Entopeduncular / Subthalamic Nuclei, &amp; Substantia Nigra / Ventral Tegmental Area).<br></td>
+</tr>
+<tr valign="top"><td nowrap>&nbsp;</td>
+<td></td>
+</tr>
+<tr valign="top"><td nowrap>Overall design</td>
+<td style="text-align: justify">Single-cell suspensions were made from P60-70 C57BL/6 male mice (3-7 replicates / mouse) and sampled with Drop-seq. On average, each cell received 17.4 K Illumina sequencing reads from which we counted 2.2K transcripts and 1.2 K genes. In total, we measure 31.7K unique genes.<br></td>
+</tr>
+<tr valign="top"><td nowrap>&nbsp;</td>
+<td></td>
+</tr>
+<tr valign="top"><td>Contributor(s)</td>
+<td><a href="/pubmed/?term=Saunders A[Author]">Saunders A</a>, <a href="/pubmed/?term=McCarroll S[Author]">McCarroll S</a></td>
+</tr>
+<tr valign="top"><td nowrap>Citation(s)</td>
+<td><span class="pubmed_id" id="30096299"><a href="/pubmed/30096299">30096299</a></span></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td>Submission date</td>
+<td>Jun 29, 2018</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td>Last update date</td>
+<td>Mar 25, 2019</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td>Contact name</td>
+<td>Arpiar Saunders</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>E-mail(s)</td>
+<td><a href="mailto:arpiar.saunders@gmail.com">arpiar.saunders@gmail.com</a><br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Organization name</td>
+<td style="text-align: justify">Harvard Medical School<br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Department</td>
+<td style="text-align: justify">Genetics<br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Lab</td>
+<td style="text-align: justify">McCarroll Lab<br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Street address</td>
+<td style="text-align: justify">77 Avenue Louis Pasteur<br></td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>City</td>
+<td style="text-align: justify">Boston</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>State/province</td>
+<td style="text-align: justify">MA</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>ZIP/Postal code</td>
+<td style="text-align: justify">02115</td>
+</tr>
+<tr bgcolor="#eeeeee" valign="top"><td nowrap>Country</td>
+<td style="text-align: justify">USA</td>
+</tr>
+<tr valign="top"><td nowrap>&nbsp;</td>
+<td></td>
+</tr>
+<tr valign="top"><td>Platforms (1)</td>
+<td onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)"><table cellpadding="3" style="position:relative;top:-5px;left:-5px"><tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GPL19057" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GPL19057</a></td>
+<td valign="top">Illumina NextSeq 500 (Mus musculus)</td>
+</tr></table></td>
+</tr>
+<tr valign="top"><td>Samples (104)<div id="L434600767divshown" name="L434600767divshown" style="display: none"><a href="javascript:HandleVisibilityChangeL434600767()"><img alt="Less..." border="0" src="/geo/img/minus_close.gif">&nbsp;Less...</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div id="L434600767divhidden" name="L434600767divhidden" style="display: block"><a href="javascript:HandleVisibilityChangeL434600767()"><img alt="More..." border="0" src="/geo/img/plus_small.gif">&nbsp;More...</a></div>
+</td>
+<td onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)"><table cellpadding="3" style="position:relative;top:-5px;left:-5px"><tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239579" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239579</a></td>
+<td valign="top">Cerebellum [P60CBRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239580" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239580</a></td>
+<td valign="top">Cerebellum [P60CBRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239581" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239581</a></td>
+<td valign="top">Cerebellum [P60CBRep1P3]</td>
+</tr>
+</table>
+<script language="Javascript" type="text/javascript">
+<!--
+function HandleVisibilityChangeL434600767(){if(document.getElementById("L434600767div").style.display == "block"){document.getElementById("L434600767div").style.display = "none";document.getElementById("L434600767divhidden").style.display = "block";document.getElementById("L434600767divshown").style.display = "none";}else{document.getElementById("L434600767div").style.display = "block";document.getElementById("L434600767divhidden").style.display = "none";document.getElementById("L434600767divshown").style.display = "block";}}
+-->
+</script>
+<div id="L434600767div" name="L434600767div" style="display: none"><table cellpadding="3" style="position:relative;top:-5px;left:-5px"><tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239582" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239582</a></td>
+<td valign="top">Cerebellum [P60CBRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239583" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239583</a></td>
+<td valign="top">Cerebellum [P60CBRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239584" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239584</a></td>
+<td valign="top">Cerebellum [P60CBRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239585" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239585</a></td>
+<td valign="top">Cerebellum [P60CBRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239586" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239586</a></td>
+<td valign="top">Frontal Cortex [P60FCRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239587" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239587</a></td>
+<td valign="top">Frontal Cortex [P60FCRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239588" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239588</a></td>
+<td valign="top">Frontal Cortex [P60FCRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239589" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239589</a></td>
+<td valign="top">Frontal Cortex [P60FCRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239590" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239590</a></td>
+<td valign="top">Frontal Cortex [P60FCRep3P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239591" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239591</a></td>
+<td valign="top">Frontal Cortex [P60FCRep3P4]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239592" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239592</a></td>
+<td valign="top">Frontal Cortex [P60FCRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239593" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239593</a></td>
+<td valign="top">Frontal Cortex [P60FCRep4P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239594" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239594</a></td>
+<td valign="top">Frontal Cortex [P60FCRep4P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239595" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239595</a></td>
+<td valign="top">Frontal Cortex [P60FCRep6P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239596" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239596</a></td>
+<td valign="top">Frontal Cortex [P60FCRep6P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239597" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239597</a></td>
+<td valign="top">Frontal Cortex [P60FCRep6P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239598" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239598</a></td>
+<td valign="top">Frontal Cortex [P60FCCx3cr1Rep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239599" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239599</a></td>
+<td valign="top">Frontal Cortex [P60FCCx3cr1Rep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239600" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239600</a></td>
+<td valign="top">Frontal Cortex [P60FCCx3cr1Rep1P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239601" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239601</a></td>
+<td valign="top">Frontal Cortex [P60FCAldh1l1Rep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239602" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239602</a></td>
+<td valign="top">Frontal Cortex [P60FCAldh1l1Rep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239603" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239603</a></td>
+<td valign="top">Frontal Cortex [P60FCAldh1l1Rep1P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239604" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239604</a></td>
+<td valign="top">Frontal Cortex [P60FCAldh1l1Rep1P4]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239605" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239605</a></td>
+<td valign="top">Frontal Cortex [P60FCRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239606" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239606</a></td>
+<td valign="top">Frontal Cortex [P60FCRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239607" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239607</a></td>
+<td valign="top">Posterior Cortex [P60PCRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239608" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239608</a></td>
+<td valign="top">Posterior Cortex [P60PCRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239609" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239609</a></td>
+<td valign="top">Posterior Cortex [P60PCRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239610" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239610</a></td>
+<td valign="top">Posterior Cortex [P60PCRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239611" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239611</a></td>
+<td valign="top">Posterior Cortex [P60PCRep3P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239612" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239612</a></td>
+<td valign="top">Posterior Cortex [P60PCRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239613" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239613</a></td>
+<td valign="top">Posterior Cortex [P60PCRep4P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239614" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239614</a></td>
+<td valign="top">Posterior Cortex [P60PCRep4P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239615" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239615</a></td>
+<td valign="top">Posterior Cortex [P60PCRep6P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239616" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239616</a></td>
+<td valign="top">Posterior Cortex [P60PCRep6P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239617" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239617</a></td>
+<td valign="top">Posterior Cortex [P60PCRep6P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239618" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239618</a></td>
+<td valign="top">Posterior Cortex [P60PCRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239619" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239619</a></td>
+<td valign="top">Posterior Cortex [P60PCRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239620" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239620</a></td>
+<td valign="top">Entopeduncular/Subthalamic Nuclei [P60ENTSTNRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239621" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239621</a></td>
+<td valign="top">Entopeduncular/Subthalamic Nuclei [P60ENTSTNRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239622" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239622</a></td>
+<td valign="top">Entopeduncular/Subthalamic Nuclei [P60ENTSTNRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239623" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239623</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239624" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239624</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239625" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239625</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239626" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239626</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239627" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239627</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239628" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239628</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep3P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239629" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239629</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239630" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239630</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep4P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239631" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239631</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep5P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239632" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239632</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep6P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239633" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239633</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep6P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239634" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239634</a></td>
+<td valign="top">GlobusPallidus Externus/Nucleus Basalis [P60GPNBRep7P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239635" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239635</a></td>
+<td valign="top">Hippocampus [P60HippoRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239636" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239636</a></td>
+<td valign="top">Hippocampus [P60HippoRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239637" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239637</a></td>
+<td valign="top">Hippocampus [HippoRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239638" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239638</a></td>
+<td valign="top">Hippocampus [HippoRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239639" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239639</a></td>
+<td valign="top">Hippocampus [HippoRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239640" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239640</a></td>
+<td valign="top">Hippocampus [HippoRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239641" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239641</a></td>
+<td valign="top">Hippocampus [HippoRep3P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239642" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239642</a></td>
+<td valign="top">Hippocampus [P60HippoRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239643" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239643</a></td>
+<td valign="top">Hippocampus [P60HippoRep4P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239644" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239644</a></td>
+<td valign="top">Hippocampus [P60HippoRep4P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239645" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239645</a></td>
+<td valign="top">Hippocampus [P60HippoRep5P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239646" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239646</a></td>
+<td valign="top">Hippocampus [P60HippoRep5P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239647" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239647</a></td>
+<td valign="top">Hippocampus [P60HippoRep5P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239648" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239648</a></td>
+<td valign="top">Hippocampus [P60HippoRep6P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239649" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239649</a></td>
+<td valign="top">Hippocampus [P60HippoRep6P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239650" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239650</a></td>
+<td valign="top">Hippocampus [P60HippoRep6P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239651" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239651</a></td>
+<td valign="top">Striatum [P60STRRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239652" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239652</a></td>
+<td valign="top">Striatum [P60STRRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239653" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239653</a></td>
+<td valign="top">Striatum [P60STRRep1P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239654" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239654</a></td>
+<td valign="top">Striatum [P60STRRep1P4]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239655" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239655</a></td>
+<td valign="top">Striatum [P60STRRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239656" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239656</a></td>
+<td valign="top">Striatum [P60STRRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239657" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239657</a></td>
+<td valign="top">Striatum [P60STRRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239658" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239658</a></td>
+<td valign="top">Striatum [P60STRRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239659" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239659</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239660" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239660</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239661" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239661</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239662" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239662</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239663" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239663</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep2P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239664" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239664</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239665" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239665</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239666" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239666</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep3P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239667" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239667</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239668" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239668</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep4P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239669" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239669</a></td>
+<td valign="top">Substantia Nigra/Ventral Tegmental Area [P60SNRep4P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239670" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239670</a></td>
+<td valign="top">Thalamus [P60THRep1P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239671" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239671</a></td>
+<td valign="top">Thalamus [P60THRep1P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239672" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239672</a></td>
+<td valign="top">Thalamus [P60THRep2P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239673" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239673</a></td>
+<td valign="top">Thalamus [P60THRep2P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239674" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239674</a></td>
+<td valign="top">Thalamus [P60THRep2P3]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239675" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239675</a></td>
+<td valign="top">Thalamus [P60THRep3P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239676" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239676</a></td>
+<td valign="top">Thalamus [P60THRep3P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239677" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239677</a></td>
+<td valign="top">Thalamus [P60THRep4P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239678" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239678</a></td>
+<td valign="top">Thalamus [P60THRep4P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239679" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239679</a></td>
+<td valign="top">Thalamus [P60THRep5P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239680" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239680</a></td>
+<td valign="top">Thalamus [P60THRep5P2]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239681" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239681</a></td>
+<td valign="top">Thalamus [P60THRep6P1]</td>
+</tr>
+<tr><td valign="top"><a href="/geo/query/acc.cgi?acc=GSM3239682" onmouseout="onLinkOut('HelpMessage' , geo_empty_help)" onmouseover="onLinkOver('HelpMessage' , geoaxema_recenter)">GSM3239682</a></td>
+<td valign="top">Thalamus [P60THRep6P2]</td>
+</tr>
+</table></div>
+</td>
+</tr>
+<tr valign="top"><td colspan="2"><strong>Relations</strong></td></tr>
+<tr valign="top"><td>BioProject</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA478603">PRJNA478603</a></td>
+</tr>
+<tr valign="top"><td>SRA</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/sra?term=SRP151685">SRP151685</a></td>
+</tr>
+</table>
+<br><span id="geo2r"></span><table cellspacing="3" width="600"><tr bgcolor="#eeeeee"><td><strong>Download family</strong></td>
+<td><strong>Format</strong></td>
+</tr>
+<tr><td><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/soft/" target="_blank">SOFT formatted family file(s)</a></td>
+<td>SOFT<a href="javascript:RPopUpWindow_Set(geoaxema_famsoft,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr>
+<tr><td><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/miniml/" target="_blank">MINiML formatted family file(s)</a></td>
+<td>MINiML<a href="javascript:RPopUpWindow_Set(geoaxema_famminiml,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr>
+<tr><td><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/matrix/" target="_blank">Series Matrix File(s)</a></td>
+<td>TXT<a href="javascript:RPopUpWindow_Set(geoaxema_fammatrix,260,210,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td>
+</tr>
+</table>
+<br><table cellpadding="2" cellspacing="2" width="600"><tr bgcolor="#eeeeee" valign="top"><td align="middle" bgcolor="#CCCCCC"><strong>Supplementary file</strong></td>
+<td align="middle" bgcolor="#CCCCCC"><strong>Size</strong></td>
+<td align="middle" bgcolor="#CCCCCC"><strong>Download</strong></td>
+<td align="middle" bgcolor="#CCCCCC"><strong>File type/resource</strong></td>
+</tr>
+<tr valign="top"><td bgcolor="#DEEBDC">GSE116470_F_GRCm38.81.P60Cerebellum_ALT.raw.dge.txt.gz</td>
+<td bgcolor="#DEEBDC" title="84147226">80.2 Mb</td>
+<td bgcolor="#DEEBDC"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60Cerebellum%5FALT%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60Cerebellum%5FALT%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#DEEBDC">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE">GSE116470_F_GRCm38.81.P60Cortex_noRep5_FRONTALonly.raw.dge.txt.gz</td>
+<td bgcolor="#EEEEEE" title="615065964">586.6 Mb</td>
+<td bgcolor="#EEEEEE"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60Cortex%5FnoRep5%5FFRONTALonly%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60Cortex%5FnoRep5%5FFRONTALonly%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#EEEEEE">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#DEEBDC">GSE116470_F_GRCm38.81.P60Cortex_noRep5_POSTERIORonly.raw.dge.txt.gz</td>
+<td bgcolor="#DEEBDC" title="362861162">346.1 Mb</td>
+<td bgcolor="#DEEBDC"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60Cortex%5FnoRep5%5FPOSTERIORonly%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60Cortex%5FnoRep5%5FPOSTERIORonly%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#DEEBDC">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE">GSE116470_F_GRCm38.81.P60EntoPeduncular.raw.dge.txt.gz</td>
+<td bgcolor="#EEEEEE" title="56677230">54.1 Mb</td>
+<td bgcolor="#EEEEEE"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60EntoPeduncular%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60EntoPeduncular%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#EEEEEE">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#DEEBDC">GSE116470_F_GRCm38.81.P60GlobusPallidus.raw.dge.txt.gz</td>
+<td bgcolor="#DEEBDC" title="199619574">190.4 Mb</td>
+<td bgcolor="#DEEBDC"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60GlobusPallidus%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60GlobusPallidus%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#DEEBDC">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE">GSE116470_F_GRCm38.81.P60Hippocampus.raw.dge.txt.gz</td>
+<td bgcolor="#EEEEEE" title="444662811">424.1 Mb</td>
+<td bgcolor="#EEEEEE"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60Hippocampus%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60Hippocampus%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#EEEEEE">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#DEEBDC">GSE116470_F_GRCm38.81.P60Striatum.raw.dge.txt.gz</td>
+<td bgcolor="#DEEBDC" title="282806246">269.7 Mb</td>
+<td bgcolor="#DEEBDC"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60Striatum%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60Striatum%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#DEEBDC">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE">GSE116470_F_GRCm38.81.P60SubstantiaNigra.raw.dge.txt.gz</td>
+<td bgcolor="#EEEEEE" title="132819690">126.7 Mb</td>
+<td bgcolor="#EEEEEE"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60SubstantiaNigra%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60SubstantiaNigra%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#EEEEEE">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#DEEBDC">GSE116470_F_GRCm38.81.P60Thalamus.raw.dge.txt.gz</td>
+<td bgcolor="#DEEBDC" title="272445026">259.8 Mb</td>
+<td bgcolor="#DEEBDC"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5FF%5FGRCm38%2E81%2EP60Thalamus%2Eraw%2Edge%2Etxt%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5FF%5FGRCm38%2E81%2EP60Thalamus%2Eraw%2Edge%2Etxt%2Egz">(http)</a></td>
+<td bgcolor="#DEEBDC">TXT</td>
+</tr>
+<tr valign="top"><td bgcolor="#EEEEEE">GSE116470_metacells.BrainCellAtlas_Saunders_version_2018.04.01.csv.gz</td>
+<td bgcolor="#EEEEEE" title="9047356">8.6 Mb</td>
+<td bgcolor="#EEEEEE"><a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE116nnn/GSE116470/suppl/GSE116470%5Fmetacells%2EBrainCellAtlas%5FSaunders%5Fversion%5F2018%2E04%2E01%2Ecsv%2Egz">(ftp)</a><a href="/geo/download/?acc=GSE116470&amp;format=file&amp;file=GSE116470%5Fmetacells%2EBrainCellAtlas%5FSaunders%5Fversion%5F2018%2E04%2E01%2Ecsv%2Egz">(http)</a></td>
+<td bgcolor="#EEEEEE">CSV</td>
+</tr>
+<tr><td><a href="/Traces/study/?acc=PRJNA478603">SRA Run Selector</a><a href="javascript:RPopUpWindow_Set(geoaxema_srarun,260,120,'','','#E1EAE6','','#538AA9','MessageBox2');" onmouseout="RPopUpWindow_Stop()"><img alt="Help" height="11" src="/coreweb/images/long_help4.gif" style="border: none" width="19"></a></td></tr>
+<tr><td class="message">Raw data are available in SRA</td></tr>
+<tr><td class="message">Processed data are available on Series record</td></tr>
+</table>
+<span id="customDlArea"></span><br></td></tr></table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td background="/coreweb/template1/pix/main_right_bg.gif"><img src="/coreweb/template1/pix/main_right_bg.gif" width="4" height="3" alt="" border="0"></td>
+    </tr>
+    <tr>
+        <td background="/coreweb/template1/pix/but_left.gif"><img src="/coreweb/template1/pix/but_left.gif" width="4" height="4" alt="" border="0"></td>
+        <td width="10000" bgcolor="#FFFFFF" background="/coreweb/template1/pix/but_mid_bg.gif"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td>
+        <td align="right" background="/coreweb/template1/pix/but_right.gif"><img src="/coreweb/template1/pix/but_right.gif" alt="" width="4" height="4" border="0"></td>
+    </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+        <td width="99%"><img src="/coreweb/template1/pix/pixel.gif" width="1" height="1" alt="" border="0"></td><td valign="top" align="right"  nowrap>
+	        <span class="HELPBAR">|<A HREF="https://www.nlm.nih.gov"> NLM </A>|<A HREF="https://www.nih.gov" CLASS="HELPBAR"> NIH </A>|<A HREF="mailto:geo@ncbi.nlm.nih.gov" CLASS="HELPBAR"> GEO Help </A>|<A HREF="/geo/info/disclaimer.html" CLASS="HELPBAR"> Disclaimer </A>|<a href="https://www.nlm.nih.gov/accessibility.html" class="HELPBAR"> Accessibility </a>|</span><br>
+        </td>
+	</tr>
+</table>
+
+
+<map name="unlmenu">
+<area alt="NCBI Home" coords="2,0,39,15" href="/" onMouseOver="changpics(unl_menu_pix, unl_menu_home_a)" onMouseOut="changpics(unl_menu_pix, unl_menu_noa)">
+<area alt="NCBI Search" coords="40,0,91,15" href="/ncbisearch/" onMouseOver="changpics(unl_menu_pix, unl_menu_search_a)" onMouseOut="changpics(unl_menu_pix, unl_menu_noa)">
+<area alt="NCBI SiteMap" coords="92,0,143,15" href="/Sitemap/" onMouseOver="changpics(unl_menu_pix, unl_menu_sitemap_a)" onMouseOut="changpics(unl_menu_pix, unl_menu_noa)">
+</map>
+
+<script type="text/javascript" 
+  src="/portal/portal3rc.fcgi/rlib/js/InstrumentNCBIBaseJS/InstrumentPageStarterJS.js"> </script>
+</body>
+</html>
+
+

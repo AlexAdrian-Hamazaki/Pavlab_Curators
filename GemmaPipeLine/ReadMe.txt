@@ -9,7 +9,8 @@ run source attentionList.sh, the results will be in attentionList.txt
 ***Below are the two most commonly used commands
 3. If you want to run DEA, generate data file, update the graphs in dianostics, and get the eeids
 Put the GSEs separated by \n in the curatingList.txt
-run source curationPipe.sh, the eeids will be in eeIDList.txt
+run "source curationPipe.sh" in your terminal
+The eeids will be in eeIDList.txt
 
 4. If you want to run fillinbatchinfo, makeProcessData (you can run this on any exp it does not affect it if no data is present), and also run the second step
 Put the GSEs separated by \n in the initialList.txt
