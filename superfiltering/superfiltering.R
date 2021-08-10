@@ -111,22 +111,42 @@ identify_subseries <- function(gse, char_input_gses) {
                                stringsAsFactors = FALSE)
   }},
   error = function(cond) {
-    browser()
+    warning(paste("unknown error at",gse))
   }
   )
 }
 
 ## Read From sheet name SubSuperFiltered on google sheets. Change the link and name of sheet accordingly
-df_raw_input <- read_sheet("https://docs.google.com/spreadsheets/d/15w03FK5pzr19yqReWLV_Kai5w0740N91RyNbjDscziY/edit#gid=287890379",
-                           sheet = "SubSuperFiltered")
+# df_raw_input <- read_sheet("https://docs.google.com/spreadsheets/d/15w03FK5pzr19yqReWLV_Kai5w0740N91RyNbjDscziY/edit#gid=287890379",
+#                            sheet = "SubSuperFiltered")
+## OR Read a file of GSEs
+
+df_raw_input <- read.delim(file = "~/Projects/Pavlab_Curators/rough_work/rna-seq-unprocessed.txt",
+                           header = FALSE,
+                           stringsAsFactors = FALSE)
+df_raw_input$V1 <- str_replace(string = df_raw_input$V1,
+                               pattern = "\\.[:digit:]*$",
+                               replacement = "")
+df_raw_input$V1 <- str_replace(string = df_raw_input$V1,
+                               pattern = " ",
+                               replacement = "")
 
 #identify which column has your GSEs in it and make it your workable list
-char_gse_inputs <- df_raw_input$x
+char_gse_inputs <- df_raw_input$V1
 
 # generate a list containing data frames
 l_sub_super <- lapply(char_gse_inputs,
                       identify_subseries,
                       char_gse_inputs)
+
+# Remove lists that contain data frames of Null values
+# these are likelyw hen the GSEs are private
+
+for (n_row in 1:length(l_sub_super)) {
+  if (is.character(l_sub_super[[n_row]])) { 
+    l_sub_super[n_row] <- NULL}
+}
+
 
 # Turn that list of data frames into a single dataframe
 
@@ -159,16 +179,13 @@ not_super <- filter(df_sub_super,
                     Subseries_hits == "Not_Superseries")
 
 superseries <- df_sub_super %>%
-  filter(Subseries_hits != "Not_Superseries") %>%
-  distinct(Superseries)
-
+  filter(Subseries_hits != "Not_Superseries")
 
 # Get the negative and positives hits
 # Positive hits had subseries GSEs also in the input
 
 nsuperseries <- df_sub_super %>%
   filter(Subseries_hits != "Not_Superseries") %>%
-  distinct()
 
 negative_hits <- filter(df_sub_super,
                         Subseries_hits == "No Subseries Scraped")
@@ -216,3 +233,4 @@ write_delim( x = (positive_hits[2]),
              file = "table_positive_hits.tsv",
              delim = "\t",
              col_names = TRUE)
+

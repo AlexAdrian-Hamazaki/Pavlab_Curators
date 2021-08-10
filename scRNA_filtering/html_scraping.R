@@ -89,7 +89,7 @@ parse_GSE <- function(GSE_id) {
   # First parse the GEO page for single cell or lnc information
   # If we find anything, return that info and move on to next GSE
   if (any
-      (str_detect(str_to_lower(td_html), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell|nucl|mito|neur).*") )))
+      (str_detect(str_to_lower(td_html), pattern = (".*sc.?(rna|nucl).*|.*single.?(cell rna|nucl|mito|neur).*") )))
     {
     message (paste(GSE_id, "is likely single-cell"))
     return (c(GSE_id, "sc"))
