@@ -37,9 +37,9 @@ raw_list <- read_sheet(url_to_sheet,
 
 ## Reanme Columns accordingly
 raw_list <- raw_list %>%
-  rename("#Accession"=1, Reason=2, Name=3)
+  rename("#Accession"=1, Reason=2)
 raw_list <- raw_list %>%
-  select(c(1,2,3))
+  select(c(1,2))
 
 ## Using pubmed api
 library(rentrez)
@@ -90,9 +90,17 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
   single_cell <- ".*((single(-)?|( )?cell)|sc).*"
   long_rna<- ".*(long|lnc(rna)?).*"
   #unavilable <- ".*(unavailable|available|supplements).*"
+  nano_string <- ".nano|nano string|string."
   should_not_blackist <- ".*(replicate|one|n ?= ?1|condition).*"
   mirna <- "mirna|micro|mi"
-  
+  ion_torrent <- "ion|torrent|iontorrent"
+  promethian <- "promethian"
+  abplatform <- "abplatform|abp"
+  bad_library <- "badlibrarystrategy|library|bad|strategy"
+  pacbio <- "pac|bio"
+  nimble_gen <- "nimble|gen"
+  seqeunces <- "sequence|seq"
+    
   ## The actual output text for each category ##
   text_taxon <- "Unsupported taxon"
   text_dye_swap <- "Unsupported design: Dye-swap"
@@ -105,15 +113,30 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
   text_unavilable <- "Insufficent available information in paper/GEO"
   text_mirna <- "Unsupported experiment type: micro RNA"
   text_to_be_deleted <- "Flagged as to be deleted. More information needed"
+  text_nano_string <- "Unsupported experiment type: NanoString"
   text_should_not_blacklist <- "This experiment probably shoudn't be on the balcklist. Double check what cateogry, or add a category"
   text_no_match <- "No match for this reason. Check Google Sheet for the correct word to use. Or if applicable, add a new category"
   
-  
-  regex_check <- function(x) {
+  ## Platform version of text
+  text_plat_mirna <- "Unsupported platform type: micro RNA"
+  text_plat_nano <- "Unsupported platform type: NanoString"
+  text_plat_long_rna <- "Unsupported platform type: Long non-coding RNA"
+  text_plat_ion_torrent <- "Unsupported platform type: IonTorrent"
+  text_plat_promethian<- "Unsupported platform type: Promethian"
+  text_plat_abplatform<- "Unsupported platform type: ABPlatform"
+  text_plat_pacbio<- "Unsupported platform type: PacBio"
+  text_plat_badlibrarystrat<- "Unsupported platform type: BadLibraryStrategy"
+  text_plat_seq <- "Probe sequences not available"
+  text_plat_nimble <- "Unsupported platform type: Nimble Gen"
+ 
+  ## platform text
+
+  regex_check <- function(x, y) {
     #---AAA What is x?
     ## ----------------------- actual matching function -------------------- ##
     ## More conditions can be added using the same ifelse format
-    ifelse(grepl(taxon, tolower(x)),
+    ifelse(grepl("^gse", tolower(y)),
+      ifelse(grepl(taxon, tolower(x)),
            text_taxon,
            ifelse(
              grepl(dye_swap, tolower(x)),
@@ -127,9 +150,6 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                  ifelse(
                    grepl(pipe_line_problem, tolower(x)),
                    text_pipeline,
-                   #ifelse(
-                     #grepl(unusable, tolower(x)),
-                     #text_unusable,
                      ifelse(
                        grepl(zscore, tolower(x)),
                        text_zscore,
@@ -140,13 +160,60 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                            grepl(long_rna, tolower(x)),
                            text_long_rna,
                            ifelse(
+                             grepl(nano_string, tolower(x)),
+                             text_nano_string,
+                           ifelse(
                            grepl(mirna, tolower(x)),
                            text_mirna,
                                ifelse(
                                  grepl(should_not_blackist, tolower(x)),
                                  text_should_not_blacklist,
-                                 text_no_match
+                                 text_no_match),
+                           ifelse(
+                             grepl("^gpl", tolower(y)),
+                             ifelse(
+                               grepl(mirna, tolower(x)),
+                               text_plat_mirna,
+                               ifelse(
+                                 grepl(nano_string, tolower(x)),
+                                 text_plat_nano,
+                                 ifelse(
+                                   grepl(long_rna, tolower(x)),
+                                   text_plat_long_rna,
+                                   ifelse(
+                                     grepl(ion_torrent, tolower(x)),
+                                     text_plat_ion_torrent,
+                                     ifelse(
+                                       grepl(abplatform, tolower(x)),
+                                       text_plat_abplatform,
+                                       ifelse(
+                                         grepl(promethian, tolower(x)),
+                                         text_plat_promethian,
+                                         ifelse(
+                                           grepl(pacbio, tolower(x)),
+                                           text_plat_pacbio,
+                                           ifelse(
+                                             grepl(bad_library, tolower(x)),
+                                             text_plat_badlibrarystrat,
+                                             ifelse(
+                                               grepl(seqeunces, tolower(x)),
+                                               text_plat_seq,
+                                               ifelse(
+                                                 grepl(nimble_gen, tolower(x)),
+                                                 text_plat_nimble,
+                                               text_no_match),
+                                             text_no_match
+                                           )
+                                         )
+                                       )
+                                     )
+                                   )
+                                 )
                                )
+                             )
+                           )
+                           )
+                           )
                              )
                            )
                          )
@@ -155,13 +222,16 @@ raw_list <- raw_list[!duplicated(raw_list[,1]),]
                    )
                  )
              )
+             )
     )
   }
   
-
+### Check if it's GSE or GPL
+  #processed_list <- raw_list %>% mutate(type = ifelse(grepl("^gp|",tolower(`#Accession`)), "Plat"), ifelse(grepl("^gse",tolower(`#Accession`)), "Exp", "Incorrect"))
+  
 ### Create a new column that has all the standardized reasons
 processed_list <- raw_list %>% 
-  mutate(processed_reason=regex_check(Reason))
+  mutate(processed_reason=regex_check(Reason, `#Accession`))
 
 ### Create a list of reasons that "potentially should not be blasklisted"
 false_positives = c(text_to_be_deleted, text_should_not_blacklist, text_no_match)
