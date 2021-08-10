@@ -23,7 +23,7 @@ library(googlesheets4)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 ##**************************************************************** Change variables here
 url_to_sheet = "https://docs.google.com/spreadsheets/d/1oXA9sNimUvsdR5k6DcTC4oD-BZGu8P1GLECCqWVcgEo/edit#gid=805085132"
-sheet_name ="SubOnlyFiltered"
+sheet_name ="NonSuperFiltered"
 ##****************************************************************
 
 ## Read From sheet name SubSuperFiltered on google sheets. Change the link and name of sheet accordingly

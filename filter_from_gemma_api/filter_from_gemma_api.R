@@ -12,8 +12,8 @@ password <- "Doglukepotato3!"
 
 
 #---For now, the running directory and target directory are hard wired to this folder system. This is where they sohuld be if you've cloned from github
-running_dir <- "~/Projects/Pavlab_Curators/filter_from_gemma_api"
-target_dir <- "~/Projects/Pavlab_Curators/filter_from_gemma_api"
+running_dir <- "~/R/Gemma/Pavlab_Curators/filter_from_gemma_api"
+target_dir <- "~/R/Gemma/Pavlab_Curators/filter_from_gemma_api"
 
 
 
